@@ -69,3 +69,15 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::put('/keuangan/item/{budgetItem}', [AdminBudgetController::class, 'updateItem'])->name('budgets.items.update');
     Route::delete('/keuangan/item/{budgetItem}', [AdminBudgetController::class, 'destroyItem'])->name('budgets.items.destroy');
 });
+
+// Fallback jika fungsi symlink() dinonaktifkan di shared hosting
+Route::get('/storage/{path}', function (string $path) {
+    $baseDir = realpath(storage_path('app/public'));
+    $fullPath = $baseDir ? realpath($baseDir . DIRECTORY_SEPARATOR . $path) : false;
+
+    if (! $baseDir || ! $fullPath || ! str_starts_with($fullPath, $baseDir) || ! is_file($fullPath)) {
+        abort(404);
+    }
+
+    return response()->file($fullPath);
+})->where('path', '.*')->name('storage.fallback');
