@@ -25,11 +25,20 @@
                 <label class="block font-semibold text-slate-700 mb-1">Keterangan</label>
                 <textarea name="description" rows="2" class="w-full rounded-xl border border-slate-300 px-3.5 py-2">{{ old('description', $budgetYear->description) }}</textarea>
             </div>
-            <div>
-                <label class="block font-semibold text-slate-700 mb-1">Upload PDF APBDes</label>
-                <input type="file" name="document_pdf" accept="application/pdf" class="w-full text-xs text-slate-500">
+            <div class="rounded-xl border border-slate-200 bg-slate-50/70 p-3.5 space-y-2">
+                <div class="flex items-center justify-between">
+                    <label class="block font-semibold text-slate-700">Upload PDF APBDes</label>
+                    @if($budgetYear->document_pdf)
+                        <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">Sudah terisi</span>
+                    @else
+                        <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-200 text-slate-600">Belum ada PDF</span>
+                    @endif
+                </div>
+                <input type="file" name="document_pdf" accept="application/pdf" class="block w-full text-xs text-slate-600 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-emerald-700 file:text-white hover:file:bg-emerald-800 cursor-pointer">
                 @if($budgetYear->document_pdf)
-                    <a href="{{ asset('storage/' . $budgetYear->document_pdf) }}" target="_blank" class="text-xs text-emerald-700 hover:underline mt-1 inline-block">Lihat PDF saat ini</a>
+                    <div class="text-xs text-slate-600">
+                        File saat ini: <a href="{{ asset('storage/' . $budgetYear->document_pdf) }}" target="_blank" class="font-semibold text-emerald-700 hover:underline">{{ basename($budgetYear->document_pdf) }} (Buka PDF)</a>
+                    </div>
                 @endif
             </div>
             <label class="inline-flex items-center space-x-2">

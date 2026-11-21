@@ -34,10 +34,7 @@
             <label class="block font-semibold text-slate-700 mb-1">Isi Lengkap</label>
             <textarea name="content" rows="7" required class="w-full rounded-xl border border-slate-300 px-3.5 py-2">{{ old('content', $post->content) }}</textarea>
         </div>
-        <div>
-            <label class="block font-semibold text-slate-700 mb-1">Gambar Sampul (Opsional)</label>
-            <input type="file" name="image" accept="image/*" class="w-full text-xs text-slate-500">
-        </div>
+        <x-admin.image-upload name="image" label="Gambar Sampul (Opsional)" :current="$post->image" />
         <label class="inline-flex items-center space-x-2">
             <input type="checkbox" name="is_published" value="1" {{ old('is_published', $post->is_published) ? 'checked' : '' }} class="rounded border-slate-300 text-emerald-700">
             <span class="font-medium text-slate-700">Publikasikan langsung ke website</span>

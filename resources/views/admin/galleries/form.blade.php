@@ -30,10 +30,7 @@
             <label class="block font-semibold text-slate-700 mb-1">Keterangan (Opsional)</label>
             <textarea name="caption" rows="3" class="w-full rounded-xl border border-slate-300 px-3.5 py-2">{{ old('caption', $gallery->caption) }}</textarea>
         </div>
-        <div>
-            <label class="block font-semibold text-slate-700 mb-1">File Foto {{ $gallery->exists ? '(Kosongkan jika tidak diubah)' : '' }}</label>
-            <input type="file" name="image" accept="image/*" {{ $gallery->exists ? '' : 'required' }} class="w-full text-xs text-slate-500">
-        </div>
+        <x-admin.image-upload name="image" label="File Foto Galeri" :current="$gallery->image" :required="!$gallery->exists" />
 
         <div class="pt-4 flex items-center space-x-3">
             <button type="submit" class="px-5 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-semibold">Simpan</button>

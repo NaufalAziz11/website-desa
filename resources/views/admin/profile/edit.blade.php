@@ -37,20 +37,14 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-            <div>
-                <label class="block font-semibold text-slate-700 mb-1">Logo Desa (Opsional)</label>
-                <input type="file" name="logo" accept="image/*" class="w-full text-xs text-slate-500">
-            </div>
-            <div>
-                <label class="block font-semibold text-slate-700 mb-1">Foto Banner Hero (Opsional)</label>
-                <input type="file" name="hero_image" accept="image/*" class="w-full text-xs text-slate-500">
-            </div>
+            <x-admin.image-upload name="logo" label="Logo Desa (Opsional)" :current="$profile->logo" />
+            <x-admin.image-upload name="hero_image" label="Foto Banner Hero (Opsional)" :current="$profile->hero_image" />
         </div>
     </div>
 
     <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-5">
         <h2 class="font-bold text-slate-900 text-base border-b border-slate-100 pb-3">Kepala Desa &amp; Sambutan</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
             <div>
                 <label class="block font-semibold text-slate-700 mb-1">Nama Kepala Desa</label>
                 <input type="text" name="head_name" value="{{ old('head_name', $profile->head_name) }}" required class="w-full rounded-xl border border-slate-300 px-3.5 py-2">
@@ -59,11 +53,8 @@
                 <label class="block font-semibold text-slate-700 mb-1">Jabatan</label>
                 <input type="text" name="head_title" value="{{ old('head_title', $profile->head_title) }}" required class="w-full rounded-xl border border-slate-300 px-3.5 py-2">
             </div>
-            <div>
-                <label class="block font-semibold text-slate-700 mb-1">Foto Kepala Desa</label>
-                <input type="file" name="head_photo" accept="image/*" class="w-full text-xs text-slate-500">
-            </div>
         </div>
+        <x-admin.image-upload name="head_photo" label="Foto Kepala Desa (Opsional)" :current="$profile->head_photo" />
         <div class="text-sm">
             <label class="block font-semibold text-slate-700 mb-1">Sambutan Kepala Desa</label>
             <textarea name="head_welcome" rows="3" class="w-full rounded-xl border border-slate-300 px-3.5 py-2">{{ old('head_welcome', $profile->head_welcome) }}</textarea>

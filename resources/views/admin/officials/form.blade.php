@@ -36,10 +36,7 @@
             <label class="block font-semibold text-slate-700 mb-1">Tugas / Bio Singkat</label>
             <textarea name="bio" rows="3" class="w-full rounded-xl border border-slate-300 px-3.5 py-2">{{ old('bio', $official->bio) }}</textarea>
         </div>
-        <div>
-            <label class="block font-semibold text-slate-700 mb-1">Foto (Opsional)</label>
-            <input type="file" name="photo" accept="image/*" class="w-full text-xs text-slate-500">
-        </div>
+        <x-admin.image-upload name="photo" label="Foto Perangkat (Opsional)" :current="$official->photo" />
         <label class="inline-flex items-center space-x-2">
             <input type="checkbox" name="is_active" value="1" {{ old('is_active', $official->is_active) ? 'checked' : '' }} class="rounded border-slate-300 text-emerald-700">
             <span class="font-medium text-slate-700">Tampilkan di halaman publik</span>

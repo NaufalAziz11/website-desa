@@ -34,16 +34,11 @@
             <label class="block font-semibold text-slate-700 mb-1">Deskripsi Lengkap</label>
             <textarea name="description" rows="6" required class="w-full rounded-xl border border-slate-300 px-3.5 py-2">{{ old('description', $potential->description) }}</textarea>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-                <label class="block font-semibold text-slate-700 mb-1">Kontak Pengelola (Opsional)</label>
-                <input type="text" name="contact" value="{{ old('contact', $potential->contact) }}" class="w-full rounded-xl border border-slate-300 px-3.5 py-2">
-            </div>
-            <div>
-                <label class="block font-semibold text-slate-700 mb-1">Gambar (Opsional)</label>
-                <input type="file" name="image" accept="image/*" class="w-full text-xs text-slate-500">
-            </div>
+        <div>
+            <label class="block font-semibold text-slate-700 mb-1">Kontak Pengelola (Opsional)</label>
+            <input type="text" name="contact" value="{{ old('contact', $potential->contact) }}" class="w-full rounded-xl border border-slate-300 px-3.5 py-2">
         </div>
+        <x-admin.image-upload name="image" label="Gambar Potensi (Opsional)" :current="$potential->image" />
         <label class="inline-flex items-center space-x-2">
             <input type="checkbox" name="is_featured" value="1" {{ old('is_featured', $potential->is_featured) ? 'checked' : '' }} class="rounded border-slate-300 text-emerald-700">
             <span class="font-medium text-slate-700">Tampilkan sebagai potensi unggulan di Beranda</span>
