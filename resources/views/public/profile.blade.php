@@ -6,7 +6,7 @@
     <!-- Header Banner -->
     <section class="bg-emerald-950 text-white py-12 sm:py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Company Profile</span>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Profile</span>
             <h1 class="text-3xl sm:text-4xl font-extrabold mt-1">Profil {{ $profile?->name ?? 'Desa' }}</h1>
             <p class="text-emerald-100/80 mt-2 max-w-2xl text-sm sm:text-base">
                 Mengenal sejarah, visi &amp; misi, demografi penduduk, struktur pemerintahan, serta wilayah administrasi desa.
