@@ -17,10 +17,7 @@ class HomeController extends Controller
         $potentials = Potential::orderByDesc('is_featured')->latest()->take(3)->get();
         $officials = Official::where('is_active', true)->orderBy('order')->take(4)->get();
 
-        $latestBudgetYear = BudgetYear::where('is_active', true)
-            ->with('items')
-            ->orderByDesc('year')
-            ->first();
+        $latestBudgetYear = BudgetYear::resolveDefaultActive();
 
         $budgetSummary = null;
         if ($latestBudgetYear) {

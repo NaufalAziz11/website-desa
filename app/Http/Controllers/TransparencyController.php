@@ -14,7 +14,7 @@ class TransparencyController extends Controller
         $selectedYearNumber = $request->query('tahun');
         $selectedYear = $selectedYearNumber
             ? $years->firstWhere('year', (int) $selectedYearNumber)
-            : $years->first();
+            : BudgetYear::resolveDefaultActive();
 
         $pendapatanItems = collect();
         $belanjaItems = collect();

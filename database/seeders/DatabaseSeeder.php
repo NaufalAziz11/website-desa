@@ -18,32 +18,32 @@ class DatabaseSeeder extends Seeder
     {
         // 1. Admin User
         User::updateOrCreate(
-            ['email' => 'admin@desasukamaju.id'],
+            ['email' => 'admin@desasukamundur.id'],
             [
-                'name' => 'Admin Desa Sukamaju',
+                'name' => 'Admin Desa Sukamundur',
                 'password' => Hash::make('password'),
             ]
         );
 
-        // 2. Village Profile (Dummy Data Generik)
+        // 2. Village Profile (Dummy Data Fiktif)
         VillageProfile::updateOrCreate(
             ['id' => 1],
             [
-                'name' => 'Desa Sukamaju',
+                'name' => 'Desa Sukamundur',
                 'tagline' => 'Maju, Mandiri, Sejahtera & Transparan',
-                'district' => 'Kecamatan Sukasari',
-                'regency' => 'Kabupaten Bandung',
-                'province' => 'Jawa Barat',
-                'postal_code' => '40381',
-                'head_name' => 'H. Ahmad Hidayat, S.Sos.',
-                'head_title' => 'Kepala Desa Sukamaju',
-                'head_welcome' => 'Assalamu\'alaikum Warahmatullahi Wabarakatuh. Selamat datang di portal resmi Pemerintah Desa Sukamaju. Website ini hadir sebagai wujud komitmen kami dalam menghadirkan pelayanan informasi publik yang cepat, akurat, serta transparansi pengelolaan keuangan desa demi terwujudnya tata kelola pemerintahan yang bersih, akuntabel, dan partisipatif.',
-                'vision' => 'Terwujudnya Desa Sukamaju yang Mandiri, Sejahtera, Berdaya Saing, dan Berakhlak Mulia Berbasis Potensi Lokal serta Tata Kelola Pemerintahan yang Transparan.',
+                'district' => 'Kecamatan Sukaharjo',
+                'regency' => 'Kabupaten Nusantara',
+                'province' => 'Jawa Contoh',
+                'postal_code' => '99999',
+                'head_name' => 'H. Ahmad Contoh, S.Sos.',
+                'head_title' => 'Kepala Desa Sukamundur',
+                'head_welcome' => 'Assalamu\'alaikum Warahmatullahi Wabarakatuh. Selamat datang di portal resmi Pemerintah Desa Sukamundur. Website ini hadir sebagai wujud komitmen kami dalam menghadirkan pelayanan informasi publik yang cepat, akurat, serta transparansi pengelolaan keuangan desa demi terwujudnya tata kelola pemerintahan yang bersih, akuntabel, dan partisipatif.',
+                'vision' => 'Terwujudnya Desa Sukamundur yang Mandiri, Sejahtera, Berdaya Saing, dan Berakhlak Mulia Berbasis Potensi Lokal serta Tata Kelola Pemerintahan yang Transparan.',
                 'mission' => "Meningkatkan kualitas pelayanan publik yang cepat, ramah, dan berbasis digital.\nMengoptimalkan potensi pertanian, wisata alam, dan UMKM lokal untuk kemandirian ekonomi warga.\nMewujudkan pengelolaan APBDes yang transparan, akuntabel, dan tepat sasaran.\nMeningkatkan kualitas infrastruktur dasar, pendidikan, dan kesehatan masyarakat desa.\nMemperkuat nilai gotong royong, kerukunan, dan pelestarian budaya lokal.",
-                'history' => "Desa Sukamaju berdiri sejak tahun 1952 sebagai hasil pemekaran wilayah di lereng perbukitan Kecamatan Sukasari. Nama 'Sukamaju' dipilih oleh para sesepuh desa sebagai doa dan harapan agar masyarakatnya senantiasa bersemangat untuk maju dan berkembang.\n\nDengan bentang alam yang subur, udara sejuk, dan sumber mata air alami, sebagian besar warga awalnya bermata pencaharian sebagai petani padi, palawija, dan kopi. Seiring perkembangan zaman, Desa Sukamaju terus bertransformasi mengembangkan sektor agrowisata, UMKM kerajinan bambu, serta digitalisasi layanan desa untuk menjawab kebutuhan masyarakat modern.",
-                'address' => 'Jl. Raya Sukamaju No. 45, Kec. Sukasari, Kab. Bandung, Jawa Barat 40381',
-                'phone' => '(022) 8765-4321',
-                'email' => 'pemdes@desasukamaju.id',
+                'history' => "Desa Sukamundur merupakan desa fiktif contoh untuk template portal desa. Sejarah singkat ini dapat Anda ubah langsung melalui Dashboard Admin pada menu Profil & Statistik Desa sesuai dengan catatan sejarah resmi desa Anda.",
+                'address' => 'Jl. Raya Sukamundur No. 01, Kec. Sukaharjo, Kab. Nusantara 99999',
+                'phone' => '(000) 0000-0000',
+                'email' => 'pemdes@desasukamundur.id',
                 'office_hours' => 'Senin - Jumat, 08:00 - 15:00 WIB',
                 'population_total' => 4850,
                 'families_total' => 1420,
@@ -58,30 +58,30 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // 3. Officials (Dummy)
+        // 3. Officials (Dummy Fiktif)
         $officials = [
-            ['name' => 'H. Ahmad Hidayat, S.Sos.', 'position' => 'Kepala Desa', 'nip' => '-', 'phone' => '0812-3456-7801', 'order' => 1, 'bio' => 'Memimpin penyelenggaraan pemerintahan, pembangunan, dan pemberdayaan masyarakat Desa Sukamaju periode 2022-2030.'],
-            ['name' => 'Siti Nurhaliza, S.AP.', 'position' => 'Sekretaris Desa', 'nip' => '198804122015032001', 'phone' => '0812-3456-7802', 'order' => 2, 'bio' => 'Koordinator kesekretariatan, administrasi pemerintahan, dan penyusunan perencanaan program kerja desa.'],
-            ['name' => 'Budi Santoso, S.E.', 'position' => 'Kaur Keuangan', 'nip' => '-', 'phone' => '0812-3456-7803', 'order' => 3, 'bio' => 'Mengelola penatausahaan keuangan desa, pelaporan realisasi APBDes, dan pertanggungjawaban anggaran.'],
-            ['name' => 'Dewi Lestari, S.Kom.', 'position' => 'Kaur Perencanaan & Umum', 'nip' => '-', 'phone' => '0812-3456-7804', 'order' => 4, 'bio' => 'Menyusun RKPDes, RPJMDes, serta mengelola aset dan sistem informasi desa.'],
-            ['name' => 'Agus Setiawan', 'position' => 'Kasi Pemerintahan', 'nip' => '-', 'phone' => '0812-3456-7805', 'order' => 5, 'bio' => 'Menangani administrasi kependudukan, pertanahan, dan ketentraman ketertiban umum desa.'],
-            ['name' => 'Rina Kartika, S.Pd.', 'position' => 'Kasi Kesejahteraan & Pelayanan', 'nip' => '-', 'phone' => '0812-3456-7806', 'order' => 6, 'bio' => 'Mengkoordinasikan program sosial, kesehatan posyandu, pendidikan, dan pelayanan warga.'],
+            ['name' => 'H. Ahmad Contoh, S.Sos.', 'position' => 'Kepala Desa', 'nip' => '-', 'phone' => '0812-0000-0001', 'order' => 1, 'bio' => 'Memimpin penyelenggaraan pemerintahan, pembangunan, dan pemberdayaan masyarakat Desa Sukamundur.'],
+            ['name' => 'Siti Contoh, S.AP.', 'position' => 'Sekretaris Desa', 'nip' => '-', 'phone' => '0812-0000-0002', 'order' => 2, 'bio' => 'Koordinator kesekretariatan, administrasi pemerintahan, dan penyusunan perencanaan program kerja desa.'],
+            ['name' => 'Budi Contoh, S.E.', 'position' => 'Kaur Keuangan', 'nip' => '-', 'phone' => '0812-0000-0003', 'order' => 3, 'bio' => 'Mengelola penatausahaan keuangan desa, pelaporan realisasi APBDes, dan pertanggungjawaban anggaran.'],
+            ['name' => 'Dewi Contoh, S.Kom.', 'position' => 'Kaur Perencanaan & Umum', 'nip' => '-', 'phone' => '0812-0000-0004', 'order' => 4, 'bio' => 'Menyusun RKPDes, RPJMDes, serta mengelola aset dan sistem informasi desa.'],
+            ['name' => 'Agus Contoh', 'position' => 'Kasi Pemerintahan', 'nip' => '-', 'phone' => '0812-0000-0005', 'order' => 5, 'bio' => 'Menangani administrasi kependudukan, pertanahan, dan ketentraman ketertiban umum desa.'],
+            ['name' => 'Rina Contoh, S.Pd.', 'position' => 'Kasi Kesejahteraan & Pelayanan', 'nip' => '-', 'phone' => '0812-0000-0006', 'order' => 6, 'bio' => 'Mengkoordinasikan program sosial, kesehatan posyandu, pendidikan, dan pelayanan warga.'],
         ];
 
         foreach ($officials as $item) {
             Official::updateOrCreate(['name' => $item['name']], $item);
         }
 
-        // 4. Potentials (Dummy)
+        // 4. Potentials (Dummy Fiktif)
         $potentials = [
             [
                 'title' => 'Agrowisata Bukit Pinang & Air Terjun',
                 'slug' => 'agrowisata-bukit-pinang-air-terjun',
                 'category' => 'Wisata',
                 'summary' => 'Destinasi wisata alam keluarga dengan panorama perbukitan, air terjun alami, dan area camping ground.',
-                'description' => "Agrowisata Bukit Pinang terletak di Dusun II pada ketinggian 1.100 mdpl. Pengunjung dapat menikmati pemandangan hamparan sawah terasering, wisata air terjun alami, serta fasilitas gardu pandang dan bumi perkemahan.\n\nDikelola oleh BUMDes Sukamaju Sejahtera, destinasi ini menjadi salah satu penyumbang utama Pendapatan Asli Desa (PADes) dan menyerap lebih dari 35 tenaga kerja lokal.",
-                'location' => 'Dusun II Sukamaju',
-                'contact' => '0813-2200-1122 (Pengelola BUMDes)',
+                'description' => "Agrowisata Bukit Pinang terletak di Dusun II pada ketinggian 1.100 mdpl. Pengunjung dapat menikmati pemandangan hamparan sawah terasering, wisata air terjun alami, serta fasilitas gardu pandang dan bumi perkemahan.\n\nDikelola oleh BUMDes Sukamundur Sejahtera, destinasi ini menjadi salah satu penyumbang utama Pendapatan Asli Desa (PADes).",
+                'location' => 'Dusun II Sukamundur',
+                'contact' => '0813-0000-1122 (Pengelola BUMDes)',
                 'image' => 'potentials/curug-arjuna.jpg',
                 'is_featured' => true,
             ],
@@ -90,31 +90,31 @@ class DatabaseSeeder extends Seeder
                 'slug' => 'sentra-umkm-anyaman-bambu-olahan-lokal',
                 'category' => 'UMKM',
                 'summary' => 'Produk kerajinan tangan ramah lingkungan dan olahan pangan khas desa mulai dari besek, teh herbal, hingga jajanan tradisional.',
-                'description' => "Sentra kerajinan dan UMKM di Dusun I telah berkembang secara turun-temurun dan kini menaungi 42 perajin serta pelaku usaha aktif. Dengan sentuhan desain kemasan modern, produk UMKM Desa Sukamaju telah dipasarkan ke berbagai kota.\n\nPemerintah desa secara rutin memberikan pendampingan pemasaran digital dan fasilitasi pameran UMKM.",
+                'description' => "Sentra kerajinan dan UMKM di Dusun I menaungi para perajin serta pelaku usaha aktif. Dengan sentuhan desain kemasan modern, produk UMKM Desa Sukamundur dipasarkan ke berbagai daerah.\n\nPemerintah desa secara rutin memberikan pendampingan pemasaran digital dan fasilitasi pameran UMKM.",
                 'location' => 'Dusun I RW 02',
-                'contact' => '0857-9988-7766 (Paguyuban UMKM)',
+                'contact' => '0857-0000-7766 (Paguyuban UMKM)',
                 'image' => 'potentials/umkm-kalisari.jpg',
                 'is_featured' => true,
             ],
             [
-                'title' => 'Pertanian Organik & Hortikultura Sukamaju',
-                'slug' => 'pertanian-organik-hortikultura-sukamaju',
+                'title' => 'Pertanian Organik & Hortikultura Sukamundur',
+                'slug' => 'pertanian-organik-hortikultura-sukamundur',
                 'category' => 'Pertanian',
-                'summary' => 'Lahan pertanian seluas 180 hektar yang menghasilkan sayuran dataran tinggi, padi organik, dan komoditas unggulan desa.',
-                'description' => "Didukung oleh sistem irigasi teknis dari mata air pegunungan, kelompok tani Desa Sukamaju mengembangkan budidaya sayuran dan padi organik tanpa pestisida kimia.\n\nHasil panen dikemas secara higienis melalui koperasi tani dan menjadi produk unggulan ketahanan pangan desa.",
+                'summary' => 'Lahan pertanian yang menghasilkan sayuran dataran tinggi, padi organik, dan komoditas unggulan desa.',
+                'description' => "Didukung oleh sistem irigasi teknis dari mata air pegunungan, kelompok tani Desa Sukamundur mengembangkan budidaya sayuran dan padi organik tanpa pestisida kimia.\n\nHasil panen dikemas secara higienis melalui koperasi tani dan menjadi produk unggulan ketahanan pangan desa.",
                 'location' => 'Dusun III & IV',
-                'contact' => '0821-4455-6677 (Gapoktan Harapan)',
+                'contact' => '0821-0000-6677 (Gapoktan Harapan)',
                 'image' => 'potentials/pertanian-kalisari.jpg',
                 'is_featured' => true,
             ],
             [
-                'title' => 'Sanggar Seni & Budaya Desa Sukamaju',
-                'slug' => 'sanggar-seni-budaya-desa-sukamaju',
+                'title' => 'Sanggar Seni & Budaya Desa Sukamundur',
+                'slug' => 'sanggar-seni-budaya-desa-sukamundur',
                 'category' => 'Budaya',
                 'summary' => 'Pelestarian kesenian tradisional, pencak silat, dan upacara adat panen raya tahunan.',
-                'description' => "Sanggar Seni Desa menjadi wadah bagi generasi muda Desa Sukamaju untuk belajar kesenian tradisional, tari daerah, dan pencak silat.\n\nSetiap tahun setelah masa panen raya, masyarakat menggelar festival budaya desa yang menarik wisatawan dari luar daerah.",
-                'location' => 'Balai Budaya Desa Sukamaju',
-                'contact' => '0812-8877-3344',
+                'description' => "Sanggar Seni Desa menjadi wadah bagi generasi muda Desa Sukamundur untuk belajar kesenian tradisional, tari daerah, dan pencak silat.\n\nSetiap tahun setelah masa panen raya, masyarakat menggelar festival budaya desa.",
+                'location' => 'Balai Budaya Desa Sukamundur',
+                'contact' => '0812-0000-3344',
                 'is_featured' => false,
             ],
         ];
@@ -123,15 +123,15 @@ class DatabaseSeeder extends Seeder
             Potential::updateOrCreate(['slug' => $item['slug']], $item);
         }
 
-        // 5. Posts (Dummy)
-        $admin = User::where('email', 'admin@desasukamaju.id')->first();
+        // 5. Posts (Dummy Fiktif)
+        $admin = User::where('email', 'admin@desasukamundur.id')->first();
         $posts = [
             [
                 'title' => 'Musyawarah Desa Penyusunan RKPDes Tahun Anggaran 2026 Berjalan Lancar',
                 'slug' => 'musyawarah-desa-penyusunan-rkpdes-2026',
                 'type' => 'Berita',
                 'excerpt' => 'Pemerintah Desa bersama BPD, tokoh masyarakat, dan perwakilan dusun menyepakati prioritas pembangunan infrastruktur dan pemberdayaan UMKM.',
-                'content' => "Bertempat di Aula Balai Desa Sukamaju, Pemerintah Desa Sukamaju bersama Badan Permusyawaratan Desa (BPD) telah melaksanakan Musyawarah Desa (Musdes) dalam rangka penyusunan Rencana Kerja Pemerintah Desa (RKPDes) Tahun Anggaran 2026.\n\nDalam musyawarah tersebut, disepakati beberapa program prioritas antara lain lanjutan rabat beton jalan usaha tani di Dusun III, rehabilitasi saluran irigasi, serta pelatihan digital marketing bagi pelaku UMKM desa.\n\nKepala Desa Sukamaju menegaskan bahwa seluruh usulan warga yang masuk akan diprioritaskan berdasarkan asas manfaat dan transparansi anggaran.",
+                'content' => "Bertempat di Aula Balai Desa Sukamundur, Pemerintah Desa bersama Badan Permusyawaratan Desa (BPD) telah melaksanakan Musyawarah Desa (Musdes) dalam rangka penyusunan Rencana Kerja Pemerintah Desa (RKPDes) Tahun Anggaran 2026.\n\nDalam musyawarah tersebut, disepakati beberapa program prioritas antara lain lanjutan rabat beton jalan usaha tani di Dusun III, rehabilitasi saluran irigasi, serta pelatihan digital marketing bagi pelaku UMKM desa.",
                 'image' => 'posts/musdes-kalisari.jpg',
                 'published_at' => now()->subDays(2),
                 'is_published' => true,
@@ -143,7 +143,7 @@ class DatabaseSeeder extends Seeder
                 'slug' => 'kerja-bakti-jalan-usaha-tani-dusun-iii',
                 'type' => 'Berita',
                 'excerpt' => 'Akses pengangkutan hasil panen petani kini jauh lebih mudah setelah pengerjaan rabat beton dan kerja bakti lingkungan selesai tepat waktu.',
-                'content' => "Pembangunan infrastruktur jalan usaha tani sepanjang 650 meter dengan lebar 2,5 meter di Dusun III serta kegiatan bersih lingkungan telah resmi selesai 100% dan dapat dimanfaatkan oleh seluruh warga.\n\nProyek ini didanai melalui Dana Desa dengan sistem padat karya tunai sehingga turut membuka lapangan kerja bagi warga setempat selama proses pengerjaan berlangsung.",
+                'content' => "Pembangunan infrastruktur jalan usaha tani sepanjang 650 meter dengan lebar 2,5 meter di Dusun III serta kegiatan bersih lingkungan telah resmi selesai 100% dan dapat dimanfaatkan oleh seluruh warga.\n\nProyek ini didanai melalui Dana Desa dengan sistem padat karya tunai.",
                 'image' => 'posts/kerja-bakti-kalisari.jpg',
                 'published_at' => now()->subDays(7),
                 'is_published' => true,
@@ -154,8 +154,8 @@ class DatabaseSeeder extends Seeder
                 'title' => 'Pengumuman Jadwal Pelayanan Administrasi & Pembuatan KTP/KK Keliling',
                 'slug' => 'pengumuman-pelayanan-ktp-kk-keliling',
                 'type' => 'Pengumuman',
-                'excerpt' => 'Disdukcapil bekerja sama dengan Pemerintah Desa Sukamaju akan membuka layanan jemput bola perekaman e-KTP dan pembaruan KK di Balai Desa.',
-                'content' => "Diberitahukan kepada seluruh warga Desa Sukamaju bahwa layanan administrasi kependudukan keliling akan dilaksanakan pada hari Rabu mendatang pukul 08.30 - 14.00 WIB di Pendopo Balai Desa.\n\nWarga diharapkan membawa dokumen persyaratan asli (Kartu Keluarga lama, Akta Kelahiran, atau Surat Pengantar RT/RW) untuk mempercepat proses pelayanan.",
+                'excerpt' => 'Layanan jemput bola perekaman e-KTP dan pembaruan KK akan dibuka di Balai Desa Sukamundur.',
+                'content' => "Diberitahukan kepada seluruh warga Desa Sukamundur bahwa layanan administrasi kependudukan keliling akan dilaksanakan pada hari Rabu mendatang pukul 08.30 - 14.00 WIB di Pendopo Balai Desa.\n\nWarga diharapkan membawa dokumen persyaratan asli (Kartu Keluarga lama, Akta Kelahiran, atau Surat Pengantar RT/RW).",
                 'published_at' => now()->subDays(4),
                 'is_published' => true,
                 'views' => 312,
@@ -166,7 +166,7 @@ class DatabaseSeeder extends Seeder
                 'slug' => 'agenda-kerja-bakti-penanaman-500-bibit-pohon',
                 'type' => 'Agenda',
                 'excerpt' => 'Ayo ikuti gerakan bersih desa dan penghijauan daerah aliran sungai bersama Karang Taruna dan seluruh perangkat desa.',
-                'content' => "Dalam rangka menjaga kelestarian lingkungan dan mencegah erosi di kawasan perbukitan, Pemerintah Desa Sukamaju mengundang seluruh elemen masyarakat untuk berpartisipasi dalam kegiatan Kerja Bakti Massal dan Penanaman 500 Bibit Pohon Alpukat serta Mangga.\n\nTitik kumpul: Lapangan Desa Sukamaju pukul 07.00 WIB. Mohon membawa peralatan kebersihan masing-masing.",
+                'content' => "Dalam rangka menjaga kelestarian lingkungan, Pemerintah Desa Sukamundur mengundang seluruh elemen masyarakat untuk berpartisipasi dalam kegiatan Kerja Bakti Massal dan Penanaman 500 Bibit Pohon.\n\nTitik kumpul: Lapangan Desa Sukamundur pukul 07.00 WIB.",
                 'event_date' => now()->addDays(5)->toDateString(),
                 'published_at' => now()->subDay(),
                 'is_published' => true,
@@ -184,13 +184,13 @@ class DatabaseSeeder extends Seeder
             ['year' => 2026],
             [
                 'title' => 'APBDes Tahun Anggaran 2026',
-                'description' => 'Anggaran Pendapatan dan Belanja Desa Sukamaju Tahun Anggaran 2026 (Data Realisasi berjalan hingga Triwulan IV).',
+                'description' => 'Anggaran Pendapatan dan Belanja Desa Sukamundur Tahun Anggaran 2026 (Data Contoh Simulasi).',
                 'is_active' => true,
             ]
         );
 
         $items2026 = [
-            ['type' => 'Pendapatan', 'category' => 'Pendapatan Asli Desa (PADes)', 'description' => 'Hasil Usaha BUMDes & Pengelolaan Agrowisata', 'budget_amount' => 145000000, 'realized_amount' => 132500000, 'notes' => 'Setoran bagi hasil BUMDes Sukamaju Sejahtera'],
+            ['type' => 'Pendapatan', 'category' => 'Pendapatan Asli Desa (PADes)', 'description' => 'Hasil Usaha BUMDes & Pengelolaan Agrowisata', 'budget_amount' => 145000000, 'realized_amount' => 132500000, 'notes' => 'Setoran bagi hasil BUMDes Sukamundur Sejahtera'],
             ['type' => 'Pendapatan', 'category' => 'Dana Desa (DD)', 'description' => 'Transfer Dana Desa dari APBN', 'budget_amount' => 1180000000, 'realized_amount' => 1180000000, 'notes' => 'Pencairan Tahap I, II, dan III selesai'],
             ['type' => 'Pendapatan', 'category' => 'Alokasi Dana Desa (ADD)', 'description' => 'Alokasi Dana Desa dari APBD Kabupaten', 'budget_amount' => 625000000, 'realized_amount' => 562500000, 'notes' => 'Pencairan hingga bulan November'],
             ['type' => 'Pendapatan', 'category' => 'Bagi Hasil Pajak & Retribusi', 'description' => 'Bagi Hasil Pajak Daerah dan Retribusi Daerah', 'budget_amount' => 85000000, 'realized_amount' => 76000000, 'notes' => 'Realisasi sesuai target triwulan'],
@@ -200,7 +200,7 @@ class DatabaseSeeder extends Seeder
             ['type' => 'Belanja', 'category' => 'Bidang Pemberdayaan Masyarakat', 'description' => 'Pelatihan UMKM Bambu, Ketahanan Pangan & Pertanian Organik', 'budget_amount' => 290000000, 'realized_amount' => 248000000, 'notes' => 'Program peningkatan kapasitas ekonomi warga'],
             ['type' => 'Belanja', 'category' => 'Bidang Penanggulangan Bencana', 'description' => 'BLT Dana Desa & Tanggap Darurat Bencana Alam', 'budget_amount' => 130000000, 'realized_amount' => 118000000, 'notes' => 'Bantuan langsung tunai untuk 30 KPM'],
             ['type' => 'Pembiayaan', 'category' => 'Penerimaan Pembiayaan', 'description' => 'SILPA Tahun Anggaran Sebelumnya (2025)', 'budget_amount' => 65000000, 'realized_amount' => 65000000, 'notes' => 'Sisa lebih perhitungan anggaran 2025'],
-            ['type' => 'Pembiayaan', 'category' => 'Pengeluaran Pembiayaan', 'description' => 'Penyertaan Modal BUMDes Sukamaju Sejahtera', 'budget_amount' => 65000000, 'realized_amount' => 65000000, 'notes' => 'Pengembangan unit usaha wisata & air bersih'],
+            ['type' => 'Pembiayaan', 'category' => 'Pengeluaran Pembiayaan', 'description' => 'Penyertaan Modal BUMDes Sukamundur Sejahtera', 'budget_amount' => 65000000, 'realized_amount' => 65000000, 'notes' => 'Pengembangan unit usaha wisata & air bersih'],
         ];
 
         if ($year2026->items()->count() === 0) {
@@ -213,7 +213,7 @@ class DatabaseSeeder extends Seeder
             ['year' => 2025],
             [
                 'title' => 'APBDes Tahun Anggaran 2025',
-                'description' => 'Laporan Realisasi Pelaksanaan APBDes Sukamaju Tahun Anggaran 2025 (Final / Audited).',
+                'description' => 'Laporan Realisasi Pelaksanaan APBDes Sukamundur Tahun Anggaran 2025 (Data Contoh).',
                 'is_active' => true,
             ]
         );
@@ -235,11 +235,11 @@ class DatabaseSeeder extends Seeder
             }
         }
 
-        // 7. Galleries (Dummy)
+        // 7. Galleries (Dummy Fiktif)
         $galleries = [
-            ['title' => 'Panorama Pagi Desa Sukamaju', 'category' => 'Wisata', 'image' => 'galleries/panorama-kalisari.jpg', 'caption' => 'Pemandangan pagi hari kawasan perbukitan dan pertanian Desa Sukamaju.', 'taken_at' => now()->subDays(10)->toDateString()],
+            ['title' => 'Panorama Pagi Desa Sukamundur', 'category' => 'Wisata', 'image' => 'galleries/panorama-kalisari.jpg', 'caption' => 'Pemandangan pagi hari kawasan perbukitan dan pertanian Desa Sukamundur.', 'taken_at' => now()->subDays(10)->toDateString()],
             ['title' => 'Pesona Alam Air Terjun Desa', 'category' => 'Wisata', 'image' => 'galleries/curug-arjuna.jpg', 'caption' => 'Destinasi wisata air terjun alami di kawasan Agrowisata Bukit Pinang.', 'taken_at' => now()->subDays(8)->toDateString()],
-            ['title' => 'Musyawarah Desa RKPDes', 'category' => 'Kegiatan', 'image' => 'galleries/musdes-kalisari.jpg', 'caption' => 'Suasana musyawarah warga bersama perangkat desa di Balai Desa Sukamaju.', 'taken_at' => now()->subDays(5)->toDateString()],
+            ['title' => 'Musyawarah Desa RKPDes', 'category' => 'Kegiatan', 'image' => 'galleries/musdes-kalisari.jpg', 'caption' => 'Suasana musyawarah warga bersama perangkat desa di Balai Desa Sukamundur.', 'taken_at' => now()->subDays(5)->toDateString()],
             ['title' => 'Gotong Royong Kerja Bakti Warga', 'category' => 'Kegiatan', 'image' => 'galleries/kerja-bakti-kalisari.jpg', 'caption' => 'Kegiatan bersih desa dan penghijauan lingkungan bersama warga.', 'taken_at' => now()->subDays(2)->toDateString()],
         ];
 

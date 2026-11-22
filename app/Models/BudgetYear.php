@@ -24,6 +24,17 @@ class BudgetYear extends Model
         return $this->hasMany(BudgetItem::class);
     }
 
+    public static function resolveDefaultActive(): ?self
+    {
+        $currentYear = (int) date('Y');
+
+        return static::where('is_active', true)
+            ->with('items')
+            ->orderByRaw('CASE WHEN year = ? THEN 0 ELSE 1 END', [$currentYear])
+            ->orderByDesc('year')
+            ->first();
+    }
+
     public function summaryByType(string $type): array
     {
         $items = $this->items->where('type', $type);

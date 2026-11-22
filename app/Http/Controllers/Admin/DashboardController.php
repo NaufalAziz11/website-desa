@@ -21,7 +21,7 @@ class DashboardController extends Controller
         ];
 
         $latestPosts = Post::latest()->take(5)->get();
-        $activeBudget = BudgetYear::where('is_active', true)->with('items')->orderByDesc('year')->first();
+        $activeBudget = BudgetYear::resolveDefaultActive();
 
         $budgetSummary = null;
         if ($activeBudget) {

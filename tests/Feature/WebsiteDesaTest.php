@@ -19,7 +19,7 @@ class WebsiteDesaTest extends TestCase
 
     public function test_public_pages_load_successfully(): void
     {
-        $this->get('/')->assertStatus(200)->assertSee('Desa Sukamaju');
+        $this->get('/')->assertStatus(200)->assertSee('Desa Sukamundur');
         $this->get('/profil')->assertStatus(200)->assertSee('Visi Desa');
         $this->get('/potensi')->assertStatus(200)->assertSee('Agrowisata Bukit Pinang');
         $this->get('/informasi')->assertStatus(200)->assertSee('Musyawarah Desa Penyusunan RKPDes');
@@ -34,7 +34,7 @@ class WebsiteDesaTest extends TestCase
 
     public function test_admin_can_login_and_access_crud_pages(): void
     {
-        $user = User::where('email', 'admin@desasukamaju.id')->firstOrFail();
+        $user = User::where('email', 'admin@desasukamundur.id')->firstOrFail();
 
         $this->actingAs($user)->get('/admin')->assertStatus(200);
         $this->actingAs($user)->get('/admin/profil')->assertStatus(200);

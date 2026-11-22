@@ -52,7 +52,7 @@
                         </div>
                     @endif
                     <div>
-                        <div class="font-bold text-slate-900 text-base md:text-lg leading-tight">{{ $villageProfile?->name ?? 'Desa Sukamaju' }}</div>
+                        <div class="font-bold text-slate-900 text-base md:text-lg leading-tight">{{ $villageProfile?->name ?? 'Desa Sukamundur' }}</div>
                         <div class="text-xs text-emerald-700 font-medium">{{ $villageProfile?->regency ?? 'Portal Resmi Desa' }}</div>
                     </div>
                 </a>
@@ -128,7 +128,7 @@
                             </div>
                         @endif
                         <div>
-                            <div class="font-bold text-white text-lg">{{ $villageProfile?->name ?? 'Desa Sukamaju' }}</div>
+                            <div class="font-bold text-white text-lg">{{ $villageProfile?->name ?? 'Desa Sukamundur' }}</div>
                             <div class="text-xs text-emerald-400">{{ $villageProfile?->tagline ?? 'Maju, Mandiri & Transparan' }}</div>
                         </div>
                     </div>
@@ -166,7 +166,7 @@
             </div>
 
             <div class="border-t border-slate-800 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-3">
-                <p>&copy; {{ date('Y') }} Pemerintah {{ $villageProfile?->name ?? 'Desa Sukamaju' }}. Seluruh hak cipta dilindungi.</p>
+                <p>&copy; {{ date('Y') }} Pemerintah {{ $villageProfile?->name ?? 'Desa Sukamundur' }}. Seluruh hak cipta dilindungi.</p>
                 <div class="flex items-center space-x-4">
                     <span>Transparansi &amp; Pelayanan Publik Digital</span>
                     <a href="{{ route('login') }}" class="text-slate-600 hover:text-slate-400 transition">Portal Admin</a>
