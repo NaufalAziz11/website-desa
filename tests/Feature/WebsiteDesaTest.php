@@ -19,12 +19,12 @@ class WebsiteDesaTest extends TestCase
 
     public function test_public_pages_load_successfully(): void
     {
-        $this->get('/')->assertStatus(200)->assertSee('Desa Kalisari');
+        $this->get('/')->assertStatus(200)->assertSee('Desa Sukamaju');
         $this->get('/profil')->assertStatus(200)->assertSee('Visi Desa');
-        $this->get('/potensi')->assertStatus(200)->assertSee('Wisata Alam Curug Arjuna');
-        $this->get('/informasi')->assertStatus(200)->assertSee('Musyawarah Desa Penyusunan RKPDes Desa Kalisari');
+        $this->get('/potensi')->assertStatus(200)->assertSee('Agrowisata Bukit Pinang');
+        $this->get('/informasi')->assertStatus(200)->assertSee('Musyawarah Desa Penyusunan RKPDes');
         $this->get('/galeri')->assertStatus(200);
-        $this->get('/transparansi')->assertStatus(200)->assertSee('APBDes Desa Kalisari Tahun Anggaran 2026');
+        $this->get('/transparansi')->assertStatus(200)->assertSee('APBDes Tahun Anggaran 2026');
     }
 
     public function test_admin_requires_authentication(): void
@@ -34,7 +34,7 @@ class WebsiteDesaTest extends TestCase
 
     public function test_admin_can_login_and_access_crud_pages(): void
     {
-        $user = User::where('email', 'admin@kalisari-blado.desa.id')->firstOrFail();
+        $user = User::where('email', 'admin@desasukamaju.id')->firstOrFail();
 
         $this->actingAs($user)->get('/admin')->assertStatus(200);
         $this->actingAs($user)->get('/admin/profil')->assertStatus(200);

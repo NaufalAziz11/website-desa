@@ -18,102 +18,103 @@ class DatabaseSeeder extends Seeder
     {
         // 1. Admin User
         User::updateOrCreate(
-            ['email' => 'admin@kalisari-blado.desa.id'],
+            ['email' => 'admin@desasukamaju.id'],
             [
-                'name' => 'Admin Desa Kalisari',
+                'name' => 'Admin Desa Sukamaju',
                 'password' => Hash::make('password'),
             ]
         );
 
-        // 2. Village Profile (Desa Kalisari, Kec. Blado, Kab. Batang, Jawa Tengah)
+        // 2. Village Profile (Dummy Data Generik)
         VillageProfile::updateOrCreate(
             ['id' => 1],
             [
-                'name' => 'Desa Kalisari',
-                'tagline' => 'Asri, Agraris, Mandiri & Transparan',
-                'district' => 'Kecamatan Blado',
-                'regency' => 'Kabupaten Batang',
-                'province' => 'Jawa Tengah',
-                'postal_code' => '51255',
-                'head_name' => 'Kepala Desa Kalisari [Perlu Disesuaikan]',
-                'head_title' => 'Kepala Desa Kalisari',
-                'head_welcome' => 'Assalamu\'alaikum Warahmatullahi Wabarakatuh. Selamat datang di portal resmi Pemerintah Desa Kalisari, Kecamatan Blado, Kabupaten Batang. Website ini hadir sebagai media informasi publik, promosi potensi pertanian, UMKM, serta wisata alam desa seperti Curug Arjuna, sekaligus wujud komitmen kami dalam menghadirkan transparansi pengelolaan APBDes kepada seluruh masyarakat.',
-                'vision' => 'Terwujudnya Desa Kalisari yang Maju, Mandiri, Sejahtera, Berbasis Pertanian Berkelanjutan dan Wisata Alam dengan Tata Kelola Pemerintahan yang Transparan.',
-                'mission' => "Meningkatkan kualitas pelayanan administrasi pemerintahan desa yang cepat, ramah, dan transparan.\nMengoptimalkan sektor pertanian hortikultura, perkebunan dataran tinggi, dan ketahanan pangan desa.\nMengembangkan potensi wisata alam Curug Arjuna serta UMKM olahan hasil bumi masyarakat.\nMewujudkan pengelolaan APBDes yang terbuka, akuntabel, dan tepat sasaran.\nMemperkuat semangat gotong royong, keamanan lingkungan, dan pelestarian alam pegunungan Blado.",
-                'history' => "Desa Kalisari merupakan salah satu desa di wilayah administratif Kecamatan Blado, Kabupaten Batang, Provinsi Jawa Tengah (kode wilayah Kemendagri 33.25.03.2007). Terletak di kawasan dataran tinggi lereng utara Dataran Tinggi Dieng, Desa Kalisari dikenal memiliki bentang alam perbukitan yang asri, udara pegunungan yang sejuk, serta lahan pertanian yang subur.\n\nSejak dahulu, masyarakat Desa Kalisari menggantungkan kehidupan pada sektor agraris melalui budidaya tanaman pangan, sayuran hortikultura, dan komoditas perkebunan dataran tinggi. Seiring berkembangnya kawasan Kecamatan Blado sebagai sentra agrowisata Kabupaten Batang, Desa Kalisari terus mendorong pengembangan wisata alam Curug Arjuna dan pemberdayaan UMKM lokal demi meningkatkan kesejahteraan warga.",
-                'address' => 'Balai Desa Kalisari, Kec. Blado, Kab. Batang, Jawa Tengah 51255',
-                'phone' => '(0285) 000-000',
-                'email' => 'pemdes@kalisari-blado.desa.id',
+                'name' => 'Desa Sukamaju',
+                'tagline' => 'Maju, Mandiri, Sejahtera & Transparan',
+                'district' => 'Kecamatan Sukasari',
+                'regency' => 'Kabupaten Bandung',
+                'province' => 'Jawa Barat',
+                'postal_code' => '40381',
+                'head_name' => 'H. Ahmad Hidayat, S.Sos.',
+                'head_title' => 'Kepala Desa Sukamaju',
+                'head_welcome' => 'Assalamu\'alaikum Warahmatullahi Wabarakatuh. Selamat datang di portal resmi Pemerintah Desa Sukamaju. Website ini hadir sebagai wujud komitmen kami dalam menghadirkan pelayanan informasi publik yang cepat, akurat, serta transparansi pengelolaan keuangan desa demi terwujudnya tata kelola pemerintahan yang bersih, akuntabel, dan partisipatif.',
+                'vision' => 'Terwujudnya Desa Sukamaju yang Mandiri, Sejahtera, Berdaya Saing, dan Berakhlak Mulia Berbasis Potensi Lokal serta Tata Kelola Pemerintahan yang Transparan.',
+                'mission' => "Meningkatkan kualitas pelayanan publik yang cepat, ramah, dan berbasis digital.\nMengoptimalkan potensi pertanian, wisata alam, dan UMKM lokal untuk kemandirian ekonomi warga.\nMewujudkan pengelolaan APBDes yang transparan, akuntabel, dan tepat sasaran.\nMeningkatkan kualitas infrastruktur dasar, pendidikan, dan kesehatan masyarakat desa.\nMemperkuat nilai gotong royong, kerukunan, dan pelestarian budaya lokal.",
+                'history' => "Desa Sukamaju berdiri sejak tahun 1952 sebagai hasil pemekaran wilayah di lereng perbukitan Kecamatan Sukasari. Nama 'Sukamaju' dipilih oleh para sesepuh desa sebagai doa dan harapan agar masyarakatnya senantiasa bersemangat untuk maju dan berkembang.\n\nDengan bentang alam yang subur, udara sejuk, dan sumber mata air alami, sebagian besar warga awalnya bermata pencaharian sebagai petani padi, palawija, dan kopi. Seiring perkembangan zaman, Desa Sukamaju terus bertransformasi mengembangkan sektor agrowisata, UMKM kerajinan bambu, serta digitalisasi layanan desa untuk menjawab kebutuhan masyarakat modern.",
+                'address' => 'Jl. Raya Sukamaju No. 45, Kec. Sukasari, Kab. Bandung, Jawa Barat 40381',
+                'phone' => '(022) 8765-4321',
+                'email' => 'pemdes@desasukamaju.id',
                 'office_hours' => 'Senin - Jumat, 08:00 - 15:00 WIB',
-                'population_total' => 2450,
-                'families_total' => 720,
-                'male_total' => 1245,
-                'female_total' => 1205,
-                'area_km2' => 4.85,
-                'dusun_count' => 3,
-                'rw_count' => 6,
-                'rt_count' => 18,
-                'map_embed_url' => 'https://maps.google.com/maps?q=Desa+Kalisari+Kecamatan+Blado+Kabupaten+Batang&t=&z=14&ie=UTF8&iwloc=&output=embed',
+                'population_total' => 4850,
+                'families_total' => 1420,
+                'male_total' => 2460,
+                'female_total' => 2390,
+                'area_km2' => 6.45,
+                'dusun_count' => 4,
+                'rw_count' => 12,
+                'rt_count' => 38,
+                'map_embed_url' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.902975851184!2d107.61612631477276!3d-6.902481295012476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e64c5e8866e5%3A0x37be7ac9d575f7ed!2sGedung%20Sate!5e0!3m2!1sid!2sid!4v1610000000000!5m2!1sid!2sid',
                 'hero_image' => 'profile/hero-kalisari.jpg',
             ]
         );
 
-        // 3. Officials (Placeholder Perangkat Desa Kalisari — Untuk Disesuaikan Nama Asli)
+        // 3. Officials (Dummy)
         $officials = [
-            ['name' => 'Kepala Desa Kalisari [Perlu Disesuaikan]', 'position' => 'Kepala Desa', 'nip' => '-', 'phone' => '0812-0000-0001', 'order' => 1, 'bio' => 'Memimpin penyelenggaraan pemerintahan, pembangunan, pembinaan, dan pemberdayaan masyarakat Desa Kalisari.'],
-            ['name' => 'Sekretaris Desa [Perlu Disesuaikan]', 'position' => 'Sekretaris Desa', 'nip' => '-', 'phone' => '0812-0000-0002', 'order' => 2, 'bio' => 'Koordinator kesekretariatan, administrasi pemerintahan desa, dan penyusunan perencanaan RKPDes/APBDes.'],
-            ['name' => 'Kaur Keuangan [Perlu Disesuaikan]', 'position' => 'Kaur Keuangan', 'nip' => '-', 'phone' => '0812-0000-0003', 'order' => 3, 'bio' => 'Mengelola penatausahaan keuangan desa, pelaporan realisasi APBDes, dan pertanggungjawaban anggaran.'],
-            ['name' => 'Kasi Pemerintahan [Perlu Disesuaikan]', 'position' => 'Kasi Pemerintahan', 'nip' => '-', 'phone' => '0812-0000-0004', 'order' => 4, 'bio' => 'Menangani pelayanan administrasi kependudukan, pertanahan, dan ketentraman ketertiban umum desa.'],
-            ['name' => 'Kasi Kesejahteraan & Pelayanan [Perlu Disesuaikan]', 'position' => 'Kasi Kesejahteraan & Pelayanan', 'nip' => '-', 'phone' => '0812-0000-0005', 'order' => 5, 'bio' => 'Mengkoordinasikan program sosial, kesehatan posyandu, pendidikan, serta pelayanan masyarakat.'],
+            ['name' => 'H. Ahmad Hidayat, S.Sos.', 'position' => 'Kepala Desa', 'nip' => '-', 'phone' => '0812-3456-7801', 'order' => 1, 'bio' => 'Memimpin penyelenggaraan pemerintahan, pembangunan, dan pemberdayaan masyarakat Desa Sukamaju periode 2022-2030.'],
+            ['name' => 'Siti Nurhaliza, S.AP.', 'position' => 'Sekretaris Desa', 'nip' => '198804122015032001', 'phone' => '0812-3456-7802', 'order' => 2, 'bio' => 'Koordinator kesekretariatan, administrasi pemerintahan, dan penyusunan perencanaan program kerja desa.'],
+            ['name' => 'Budi Santoso, S.E.', 'position' => 'Kaur Keuangan', 'nip' => '-', 'phone' => '0812-3456-7803', 'order' => 3, 'bio' => 'Mengelola penatausahaan keuangan desa, pelaporan realisasi APBDes, dan pertanggungjawaban anggaran.'],
+            ['name' => 'Dewi Lestari, S.Kom.', 'position' => 'Kaur Perencanaan & Umum', 'nip' => '-', 'phone' => '0812-3456-7804', 'order' => 4, 'bio' => 'Menyusun RKPDes, RPJMDes, serta mengelola aset dan sistem informasi desa.'],
+            ['name' => 'Agus Setiawan', 'position' => 'Kasi Pemerintahan', 'nip' => '-', 'phone' => '0812-3456-7805', 'order' => 5, 'bio' => 'Menangani administrasi kependudukan, pertanahan, dan ketentraman ketertiban umum desa.'],
+            ['name' => 'Rina Kartika, S.Pd.', 'position' => 'Kasi Kesejahteraan & Pelayanan', 'nip' => '-', 'phone' => '0812-3456-7806', 'order' => 6, 'bio' => 'Mengkoordinasikan program sosial, kesehatan posyandu, pendidikan, dan pelayanan warga.'],
         ];
 
         foreach ($officials as $item) {
             Official::updateOrCreate(['name' => $item['name']], $item);
         }
 
-        // 4. Potentials (Potensi Nyata Desa Kalisari, Blado, Batang)
+        // 4. Potentials (Dummy)
         $potentials = [
             [
-                'title' => 'Wisata Alam Curug Arjuna',
-                'slug' => 'wisata-alam-curug-arjuna',
+                'title' => 'Agrowisata Bukit Pinang & Air Terjun',
+                'slug' => 'agrowisata-bukit-pinang-air-terjun',
                 'category' => 'Wisata',
-                'summary' => 'Destinasi wisata air terjun pegunungan di Dukuh Kalisari dengan aliran air jernih dan suasana pedesaan yang asri.',
-                'description' => "Curug Arjuna terletak di Dukuh Kalisari, Desa Kalisari, Kecamatan Blado, Kabupaten Batang. Dikelilingi oleh vegetasi hijau dan perbukitan yang sejuk, curug ini menawarkan pengalaman wisata petualangan alam serta ketenangan suasana pedesaan.\n\nPotensi ini terus dikembangkan bersama kelompok sadar wisata (Pokdarwis) dan pemuda desa sebagai daya tarik wisata alam unggulan di wilayah Blado.",
-                'location' => 'Dukuh Kalisari, Desa Kalisari, Kec. Blado',
-                'contact' => 'Pokdarwis Desa Kalisari [Perlu Disesuaikan]',
+                'summary' => 'Destinasi wisata alam keluarga dengan panorama perbukitan, air terjun alami, dan area camping ground.',
+                'description' => "Agrowisata Bukit Pinang terletak di Dusun II pada ketinggian 1.100 mdpl. Pengunjung dapat menikmati pemandangan hamparan sawah terasering, wisata air terjun alami, serta fasilitas gardu pandang dan bumi perkemahan.\n\nDikelola oleh BUMDes Sukamaju Sejahtera, destinasi ini menjadi salah satu penyumbang utama Pendapatan Asli Desa (PADes) dan menyerap lebih dari 35 tenaga kerja lokal.",
+                'location' => 'Dusun II Sukamaju',
+                'contact' => '0813-2200-1122 (Pengelola BUMDes)',
                 'image' => 'potentials/curug-arjuna.jpg',
                 'is_featured' => true,
             ],
             [
-                'title' => 'Pertanian Hortikultura & Sayuran Dataran Tinggi',
-                'slug' => 'pertanian-hortikultura-sayuran-dataran-tinggi',
-                'category' => 'Pertanian',
-                'summary' => 'Lahan pertanian subur di lereng pegunungan Blado yang menghasilkan sayuran segar, buah-buahan, padi, dan palawija.',
-                'description' => "Berada pada iklim pegunungan yang sejuk, mayoritas warga Desa Kalisari bermata pencaharian sebagai petani. Lahan pertanian desa menghasilkan beragam komoditas hortikultura seperti sayuran segar, tanaman pangan, serta komoditas perkebunan dataran tinggi.\n\nPemerintah desa terus mendukung penguatan kelompok tani melalui perbaikan irigasi dan akses jalan usaha tani.",
-                'location' => 'Wilayah Pertanian Desa Kalisari',
-                'contact' => 'Gapoktan Desa Kalisari [Perlu Disesuaikan]',
-                'image' => 'potentials/pertanian-kalisari.jpg',
-                'is_featured' => true,
-            ],
-            [
-                'title' => 'UMKM Olahan Hasil Bumi & Penyangga Wisata Blado',
-                'slug' => 'umkm-olahan-hasil-bumi-kalisari',
+                'title' => 'Sentra UMKM Anyaman Bambu & Olahan Lokal',
+                'slug' => 'sentra-umkm-anyaman-bambu-olahan-lokal',
                 'category' => 'UMKM',
-                'summary' => 'Produk olahan pangan lokal, kerajinan rumah tangga, kuliner pedesaan, dan jasa pendukung wisata Kecamatan Blado.',
-                'description' => "Letak Desa Kalisari yang berada di kawasan Kecamatan Blado sebagai sentra agrowisata Kabupaten Batang membuka peluang besar bagi UMKM warga.\n\nPelaku usaha mikro desa memproduksi beragam olahan hasil bumi lokal, jajanan tradisional, serta kerajinan rumah tangga untuk dipasarkan kepada warga maupun wisatawan yang melintas.",
-                'location' => 'Desa Kalisari, Kec. Blado',
-                'contact' => 'Paguyuban UMKM Kalisari [Perlu Disesuaikan]',
+                'summary' => 'Produk kerajinan tangan ramah lingkungan dan olahan pangan khas desa mulai dari besek, teh herbal, hingga jajanan tradisional.',
+                'description' => "Sentra kerajinan dan UMKM di Dusun I telah berkembang secara turun-temurun dan kini menaungi 42 perajin serta pelaku usaha aktif. Dengan sentuhan desain kemasan modern, produk UMKM Desa Sukamaju telah dipasarkan ke berbagai kota.\n\nPemerintah desa secara rutin memberikan pendampingan pemasaran digital dan fasilitasi pameran UMKM.",
+                'location' => 'Dusun I RW 02',
+                'contact' => '0857-9988-7766 (Paguyuban UMKM)',
                 'image' => 'potentials/umkm-kalisari.jpg',
                 'is_featured' => true,
             ],
             [
-                'title' => 'Agrowisata Edukasi & Tradisi Gotong Royong Desa',
-                'slug' => 'agrowisata-edukasi-tradisi-kalisari',
+                'title' => 'Pertanian Organik & Hortikultura Sukamaju',
+                'slug' => 'pertanian-organik-hortikultura-sukamaju',
+                'category' => 'Pertanian',
+                'summary' => 'Lahan pertanian seluas 180 hektar yang menghasilkan sayuran dataran tinggi, padi organik, dan komoditas unggulan desa.',
+                'description' => "Didukung oleh sistem irigasi teknis dari mata air pegunungan, kelompok tani Desa Sukamaju mengembangkan budidaya sayuran dan padi organik tanpa pestisida kimia.\n\nHasil panen dikemas secara higienis melalui koperasi tani dan menjadi produk unggulan ketahanan pangan desa.",
+                'location' => 'Dusun III & IV',
+                'contact' => '0821-4455-6677 (Gapoktan Harapan)',
+                'image' => 'potentials/pertanian-kalisari.jpg',
+                'is_featured' => true,
+            ],
+            [
+                'title' => 'Sanggar Seni & Budaya Desa Sukamaju',
+                'slug' => 'sanggar-seni-budaya-desa-sukamaju',
                 'category' => 'Budaya',
-                'summary' => 'Pelestarian tradisi budaya pedesaan Jawa, kegiatan bersih desa, serta potensi wisata edukasi bercocok tanam.',
-                'description' => "Masyarakat Desa Kalisari menjunjung tinggi nilai-nilai gotong royong dan kearifan lokal pedesaan Jawa. Kegiatan bersih desa, kerja bakti lingkungan, dan aktivitas pertanian tradisional menjadi daya tarik tersendiri bagi pengunjung yang ingin merasakan kehidupan desa pegunungan yang harmonis.",
-                'location' => 'Balai Desa & Lingkungan Desa Kalisari',
-                'contact' => 'Pemdes Kalisari [Perlu Disesuaikan]',
+                'summary' => 'Pelestarian kesenian tradisional, pencak silat, dan upacara adat panen raya tahunan.',
+                'description' => "Sanggar Seni Desa menjadi wadah bagi generasi muda Desa Sukamaju untuk belajar kesenian tradisional, tari daerah, dan pencak silat.\n\nSetiap tahun setelah masa panen raya, masyarakat menggelar festival budaya desa yang menarik wisatawan dari luar daerah.",
+                'location' => 'Balai Budaya Desa Sukamaju',
+                'contact' => '0812-8877-3344',
                 'is_featured' => false,
             ],
         ];
@@ -122,54 +123,54 @@ class DatabaseSeeder extends Seeder
             Potential::updateOrCreate(['slug' => $item['slug']], $item);
         }
 
-        // 5. Posts (Berita, Pengumuman, Agenda Kontekstual Desa Kalisari)
-        $admin = User::where('email', 'admin@kalisari-blado.desa.id')->first();
+        // 5. Posts (Dummy)
+        $admin = User::where('email', 'admin@desasukamaju.id')->first();
         $posts = [
             [
-                'title' => 'Musyawarah Desa Penyusunan RKPDes Desa Kalisari Tahun Anggaran 2026',
-                'slug' => 'musyawarah-desa-rkpdes-kalisari-2026',
+                'title' => 'Musyawarah Desa Penyusunan RKPDes Tahun Anggaran 2026 Berjalan Lancar',
+                'slug' => 'musyawarah-desa-penyusunan-rkpdes-2026',
                 'type' => 'Berita',
-                'excerpt' => 'Pemerintah Desa Kalisari bersama BPD dan perwakilan masyarakat menyepakati prioritas pembangunan infrastruktur tani dan penataan akses wisata.',
-                'content' => "Bertempat di Balai Desa Kalisari, Pemerintah Desa Kalisari bersama Badan Permusyawaratan Desa (BPD), tokoh masyarakat, dan perwakilan RT/RW telah melaksanakan Musyawarah Desa (Musdes) penyusunan RKPDes Tahun Anggaran 2026.\n\nPrioritas yang disepakati meliputi peningkatan jalan usaha tani, pemeliharaan saluran irigasi pertanian, serta dukungan penataan akses menuju kawasan wisata Curug Arjuna.\n\nSeluruh rencana anggaran dan realisasi APBDes dipublikasikan secara terbuka melalui menu Transparansi APBDes.",
+                'excerpt' => 'Pemerintah Desa bersama BPD, tokoh masyarakat, dan perwakilan dusun menyepakati prioritas pembangunan infrastruktur dan pemberdayaan UMKM.',
+                'content' => "Bertempat di Aula Balai Desa Sukamaju, Pemerintah Desa Sukamaju bersama Badan Permusyawaratan Desa (BPD) telah melaksanakan Musyawarah Desa (Musdes) dalam rangka penyusunan Rencana Kerja Pemerintah Desa (RKPDes) Tahun Anggaran 2026.\n\nDalam musyawarah tersebut, disepakati beberapa program prioritas antara lain lanjutan rabat beton jalan usaha tani di Dusun III, rehabilitasi saluran irigasi, serta pelatihan digital marketing bagi pelaku UMKM desa.\n\nKepala Desa Sukamaju menegaskan bahwa seluruh usulan warga yang masuk akan diprioritaskan berdasarkan asas manfaat dan transparansi anggaran.",
                 'image' => 'posts/musdes-kalisari.jpg',
                 'published_at' => now()->subDays(2),
                 'is_published' => true,
-                'views' => 142,
+                'views' => 148,
                 'user_id' => $admin?->id,
             ],
             [
-                'title' => 'Kerja Bakti Pembersihan Saluran Air & Akses Jalan Desa Kalisari',
-                'slug' => 'kerja-bakti-saluran-air-kalisari',
+                'title' => 'Kerja Bakti Massal & Pembangunan Jalan Usaha Tani Dusun III Rampung 100%',
+                'slug' => 'kerja-bakti-jalan-usaha-tani-dusun-iii',
                 'type' => 'Berita',
-                'excerpt' => 'Warga Desa Kalisari bergotong royong membersihkan drainase jalan desa dan jalur menuju area pertanian menjelang musim penghujan.',
-                'content' => "Warga dari berbagai dukuh di Desa Kalisari melaksanakan kerja bakti massal membersihkan saluran drainase dan merapikan bahu jalan utama desa.\n\nKegiatan gotong royong ini dilakukan untuk mengantisipasi genangan air saat curah hujan tinggi di kawasan pegunungan Kecamatan Blado sekaligus menjaga kenyamanan akses mobilitas hasil pertanian warga.",
+                'excerpt' => 'Akses pengangkutan hasil panen petani kini jauh lebih mudah setelah pengerjaan rabat beton dan kerja bakti lingkungan selesai tepat waktu.',
+                'content' => "Pembangunan infrastruktur jalan usaha tani sepanjang 650 meter dengan lebar 2,5 meter di Dusun III serta kegiatan bersih lingkungan telah resmi selesai 100% dan dapat dimanfaatkan oleh seluruh warga.\n\nProyek ini didanai melalui Dana Desa dengan sistem padat karya tunai sehingga turut membuka lapangan kerja bagi warga setempat selama proses pengerjaan berlangsung.",
                 'image' => 'posts/kerja-bakti-kalisari.jpg',
-                'published_at' => now()->subDays(6),
+                'published_at' => now()->subDays(7),
                 'is_published' => true,
-                'views' => 195,
+                'views' => 235,
                 'user_id' => $admin?->id,
             ],
             [
-                'title' => 'Pengumuman Jadwal Pelayanan Administrasi & Surat Keterangan di Balai Desa Kalisari',
-                'slug' => 'pengumuman-jadwal-pelayanan-balai-desa-kalisari',
+                'title' => 'Pengumuman Jadwal Pelayanan Administrasi & Pembuatan KTP/KK Keliling',
+                'slug' => 'pengumuman-pelayanan-ktp-kk-keliling',
                 'type' => 'Pengumuman',
-                'excerpt' => 'Informasi jam pelayanan surat menyurat, pengantar KTP/KK, dan layanan administrasi warga di Kantor Balai Desa Kalisari.',
-                'content' => "Diberitahukan kepada seluruh warga Desa Kalisari bahwa pelayanan administrasi pemerintahan desa dibuka setiap hari Senin hingga Jumat pukul 08.00 - 15.00 WIB di Kantor Balai Desa Kalisari.\n\nWarga diharapkan membawa dokumen pendukung (KTP, Kartu Keluarga, serta surat pengantar RT/RW) agar proses pelayanan berjalan cepat dan tertib.",
+                'excerpt' => 'Disdukcapil bekerja sama dengan Pemerintah Desa Sukamaju akan membuka layanan jemput bola perekaman e-KTP dan pembaruan KK di Balai Desa.',
+                'content' => "Diberitahukan kepada seluruh warga Desa Sukamaju bahwa layanan administrasi kependudukan keliling akan dilaksanakan pada hari Rabu mendatang pukul 08.30 - 14.00 WIB di Pendopo Balai Desa.\n\nWarga diharapkan membawa dokumen persyaratan asli (Kartu Keluarga lama, Akta Kelahiran, atau Surat Pengantar RT/RW) untuk mempercepat proses pelayanan.",
                 'published_at' => now()->subDays(4),
                 'is_published' => true,
-                'views' => 260,
+                'views' => 312,
                 'user_id' => $admin?->id,
             ],
             [
-                'title' => 'Agenda Posyandu Balita, Lansia & Koordinasi Pokdarwis Curug Arjuna',
-                'slug' => 'agenda-posyandu-pokdarwis-kalisari',
+                'title' => 'Agenda Kerja Bakti Massal & Penanaman 500 Bibit Pohon Produktif',
+                'slug' => 'agenda-kerja-bakti-penanaman-500-bibit-pohon',
                 'type' => 'Agenda',
-                'excerpt' => 'Jadwal kegiatan pelayanan kesehatan posyandu desa dan rapat koordinasi pengembangan wisata Curug Arjuna.',
-                'content' => "Mengundang ibu-ibu kader posyandu, warga peserta posyandu balita dan lansia, serta anggota Pokdarwis Desa Kalisari untuk mengikuti rangkaian kegiatan rutin minggu ini di Balai Desa Kalisari.\n\nMari bersama-sama menjaga kesehatan keluarga dan memajukan potensi wisata serta UMKM Desa Kalisari.",
-                'event_date' => now()->addDays(4)->toDateString(),
+                'excerpt' => 'Ayo ikuti gerakan bersih desa dan penghijauan daerah aliran sungai bersama Karang Taruna dan seluruh perangkat desa.',
+                'content' => "Dalam rangka menjaga kelestarian lingkungan dan mencegah erosi di kawasan perbukitan, Pemerintah Desa Sukamaju mengundang seluruh elemen masyarakat untuk berpartisipasi dalam kegiatan Kerja Bakti Massal dan Penanaman 500 Bibit Pohon Alpukat serta Mangga.\n\nTitik kumpul: Lapangan Desa Sukamaju pukul 07.00 WIB. Mohon membawa peralatan kebersihan masing-masing.",
+                'event_date' => now()->addDays(5)->toDateString(),
                 'published_at' => now()->subDay(),
                 'is_published' => true,
-                'views' => 91,
+                'views' => 94,
                 'user_id' => $admin?->id,
             ],
         ];
@@ -178,28 +179,28 @@ class DatabaseSeeder extends Seeder
             Post::updateOrCreate(['slug' => $item['slug']], $item);
         }
 
-        // 6. Budget Years & Items (Simulasi APBDes Desa Kalisari — Untuk Disesuaikan Angka Resmi)
+        // 6. Budget Years & Items (Dummy APBDes 2025 & 2026)
         $year2026 = BudgetYear::updateOrCreate(
             ['year' => 2026],
             [
-                'title' => 'APBDes Desa Kalisari Tahun Anggaran 2026 [Simulasi]',
-                'description' => 'Ringkasan Anggaran Pendapatan dan Belanja Desa (APBDes) Desa Kalisari, Kec. Blado, Kab. Batang TA 2026. Angka simulasi awal sebelum input data resmi.',
+                'title' => 'APBDes Tahun Anggaran 2026',
+                'description' => 'Anggaran Pendapatan dan Belanja Desa Sukamaju Tahun Anggaran 2026 (Data Realisasi berjalan hingga Triwulan IV).',
                 'is_active' => true,
             ]
         );
 
         $items2026 = [
-            ['type' => 'Pendapatan', 'category' => 'Dana Desa (DD)', 'description' => 'Transfer Dana Desa dari APBN', 'budget_amount' => 980000000, 'realized_amount' => 980000000, 'notes' => 'Angka simulasi — sesuaikan dengan APBDes resmi'],
-            ['type' => 'Pendapatan', 'category' => 'Alokasi Dana Desa (ADD)', 'description' => 'Alokasi Dana Desa dari APBD Kabupaten Batang', 'budget_amount' => 485000000, 'realized_amount' => 440000000, 'notes' => 'Pencairan bertahap'],
-            ['type' => 'Pendapatan', 'category' => 'Pendapatan Asli Desa (PADes)', 'description' => 'Pengelolaan Aset Desa & Kontribusi Wisata Curug Arjuna', 'budget_amount' => 65000000, 'realized_amount' => 58000000, 'notes' => 'Angka simulasi awal'],
-            ['type' => 'Pendapatan', 'category' => 'Bagi Hasil Pajak & Retribusi', 'description' => 'Bagi Hasil Pajak dan Retribusi Daerah', 'budget_amount' => 55000000, 'realized_amount' => 49500000, 'notes' => 'Realisasi berjalan'],
-            ['type' => 'Belanja', 'category' => 'Bidang Penyelenggaraan Pemerintahan', 'description' => 'Penghasilan Tetap, Tunjangan Perangkat & Operasional Balai Desa', 'budget_amount' => 490000000, 'realized_amount' => 450000000, 'notes' => 'Gaji perangkat, BPD, dan layanan publik'],
-            ['type' => 'Belanja', 'category' => 'Bidang Pelaksanaan Pembangunan', 'description' => 'Jalan Usaha Tani, Irigasi Pertanian & Akses Curug Arjuna', 'budget_amount' => 620000000, 'realized_amount' => 585000000, 'notes' => 'Pembangunan fisik infrastruktur desa'],
-            ['type' => 'Belanja', 'category' => 'Bidang Pembinaan Kemasyarakatan', 'description' => 'Pembinaan Karang Taruna, PKK, Posyandu & Linmas', 'budget_amount' => 165000000, 'realized_amount' => 150000000, 'notes' => 'Kegiatan sosial kemasyarakatan'],
-            ['type' => 'Belanja', 'category' => 'Bidang Pemberdayaan Masyarakat', 'description' => 'Pelatihan Hortikultura, UMKM & Pokdarwis Desa Kalisari', 'budget_amount' => 195000000, 'realized_amount' => 172000000, 'notes' => 'Peningkatan kapasitas petani & UMKM'],
-            ['type' => 'Belanja', 'category' => 'Bidang Penanggulangan Bencana', 'description' => 'BLT Dana Desa & Mitigasi Bencana Kawasan Pegunungan', 'budget_amount' => 115000000, 'realized_amount' => 108000000, 'notes' => 'Bantuan langsung tunai & tanggap darurat'],
-            ['type' => 'Pembiayaan', 'category' => 'Penerimaan Pembiayaan', 'description' => 'SILPA Tahun Anggaran Sebelumnya (2025)', 'budget_amount' => 42000000, 'realized_amount' => 42000000, 'notes' => 'Sisa lebih perhitungan anggaran'],
-            ['type' => 'Pembiayaan', 'category' => 'Pengeluaran Pembiayaan', 'description' => 'Penyertaan Modal BUMDes Kalisari', 'budget_amount' => 42000000, 'realized_amount' => 42000000, 'notes' => 'Pengembangan unit usaha desa'],
+            ['type' => 'Pendapatan', 'category' => 'Pendapatan Asli Desa (PADes)', 'description' => 'Hasil Usaha BUMDes & Pengelolaan Agrowisata', 'budget_amount' => 145000000, 'realized_amount' => 132500000, 'notes' => 'Setoran bagi hasil BUMDes Sukamaju Sejahtera'],
+            ['type' => 'Pendapatan', 'category' => 'Dana Desa (DD)', 'description' => 'Transfer Dana Desa dari APBN', 'budget_amount' => 1180000000, 'realized_amount' => 1180000000, 'notes' => 'Pencairan Tahap I, II, dan III selesai'],
+            ['type' => 'Pendapatan', 'category' => 'Alokasi Dana Desa (ADD)', 'description' => 'Alokasi Dana Desa dari APBD Kabupaten', 'budget_amount' => 625000000, 'realized_amount' => 562500000, 'notes' => 'Pencairan hingga bulan November'],
+            ['type' => 'Pendapatan', 'category' => 'Bagi Hasil Pajak & Retribusi', 'description' => 'Bagi Hasil Pajak Daerah dan Retribusi Daerah', 'budget_amount' => 85000000, 'realized_amount' => 76000000, 'notes' => 'Realisasi sesuai target triwulan'],
+            ['type' => 'Belanja', 'category' => 'Bidang Penyelenggaraan Pemerintahan', 'description' => 'Penghasilan Tetap, Tunjangan Perangkat & Operasional Kantor Desa', 'budget_amount' => 585000000, 'realized_amount' => 520000000, 'notes' => 'Gaji perangkat, BPD, dan layanan administrasi'],
+            ['type' => 'Belanja', 'category' => 'Bidang Pelaksanaan Pembangunan', 'description' => 'Rabat Beton Jalan Usaha Tani, Irigasi & Posyandu', 'budget_amount' => 820000000, 'realized_amount' => 775000000, 'notes' => 'Pembangunan fisik infrastruktur desa'],
+            ['type' => 'Belanja', 'category' => 'Bidang Pembinaan Kemasyarakatan', 'description' => 'Pembinaan Karang Taruna, PKK, Linmas & Keagamaan', 'budget_amount' => 210000000, 'realized_amount' => 185000000, 'notes' => 'Kegiatan sosial kemasyarakatan dan keamanan'],
+            ['type' => 'Belanja', 'category' => 'Bidang Pemberdayaan Masyarakat', 'description' => 'Pelatihan UMKM Bambu, Ketahanan Pangan & Pertanian Organik', 'budget_amount' => 290000000, 'realized_amount' => 248000000, 'notes' => 'Program peningkatan kapasitas ekonomi warga'],
+            ['type' => 'Belanja', 'category' => 'Bidang Penanggulangan Bencana', 'description' => 'BLT Dana Desa & Tanggap Darurat Bencana Alam', 'budget_amount' => 130000000, 'realized_amount' => 118000000, 'notes' => 'Bantuan langsung tunai untuk 30 KPM'],
+            ['type' => 'Pembiayaan', 'category' => 'Penerimaan Pembiayaan', 'description' => 'SILPA Tahun Anggaran Sebelumnya (2025)', 'budget_amount' => 65000000, 'realized_amount' => 65000000, 'notes' => 'Sisa lebih perhitungan anggaran 2025'],
+            ['type' => 'Pembiayaan', 'category' => 'Pengeluaran Pembiayaan', 'description' => 'Penyertaan Modal BUMDes Sukamaju Sejahtera', 'budget_amount' => 65000000, 'realized_amount' => 65000000, 'notes' => 'Pengembangan unit usaha wisata & air bersih'],
         ];
 
         if ($year2026->items()->count() === 0) {
@@ -211,21 +212,21 @@ class DatabaseSeeder extends Seeder
         $year2025 = BudgetYear::updateOrCreate(
             ['year' => 2025],
             [
-                'title' => 'APBDes Desa Kalisari Tahun Anggaran 2025 [Simulasi]',
-                'description' => 'Laporan realisasi pelaksanaan APBDes Desa Kalisari Tahun Anggaran 2025 (Data simulasi awal).',
+                'title' => 'APBDes Tahun Anggaran 2025',
+                'description' => 'Laporan Realisasi Pelaksanaan APBDes Sukamaju Tahun Anggaran 2025 (Final / Audited).',
                 'is_active' => true,
             ]
         );
 
         $items2025 = [
-            ['type' => 'Pendapatan', 'category' => 'Dana Desa (DD)', 'description' => 'Transfer Dana Desa dari APBN', 'budget_amount' => 940000000, 'realized_amount' => 940000000, 'notes' => 'Terealisasi 100%'],
-            ['type' => 'Pendapatan', 'category' => 'Alokasi Dana Desa (ADD)', 'description' => 'Alokasi Dana Desa dari APBD Kabupaten Batang', 'budget_amount' => 460000000, 'realized_amount' => 460000000, 'notes' => 'Terealisasi 100%'],
-            ['type' => 'Pendapatan', 'category' => 'Pendapatan Asli Desa (PADes)', 'description' => 'Hasil Pengelolaan Aset & Wisata Desa', 'budget_amount' => 55000000, 'realized_amount' => 58500000, 'notes' => 'Melampaui target'],
-            ['type' => 'Belanja', 'category' => 'Bidang Penyelenggaraan Pemerintahan', 'description' => 'Operasional Pemerintahan & Pelayanan Balai Desa', 'budget_amount' => 470000000, 'realized_amount' => 462000000, 'notes' => 'Efisiensi operasional'],
-            ['type' => 'Belanja', 'category' => 'Bidang Pelaksanaan Pembangunan', 'description' => 'Rabat Beton Jalan Desa & Drainase Lingkungan', 'budget_amount' => 580000000, 'realized_amount' => 568000000, 'notes' => 'Pekerjaan fisik selesai'],
-            ['type' => 'Belanja', 'category' => 'Bidang Pembinaan Kemasyarakatan', 'description' => 'Posyandu, PKK & Kepemudaan', 'budget_amount' => 150000000, 'realized_amount' => 146000000, 'notes' => 'Berjalan sesuai jadwal'],
-            ['type' => 'Belanja', 'category' => 'Bidang Pemberdayaan Masyarakat', 'description' => 'Bantuan Kelompok Tani & Pelatihan UMKM', 'budget_amount' => 165000000, 'realized_amount' => 159000000, 'notes' => 'Tersalurkan'],
-            ['type' => 'Belanja', 'category' => 'Bidang Penanggulangan Bencana', 'description' => 'BLT Dana Desa & Mitigasi Longsor', 'budget_amount' => 90000000, 'realized_amount' => 88000000, 'notes' => 'Tersalurkan penuh'],
+            ['type' => 'Pendapatan', 'category' => 'Pendapatan Asli Desa (PADes)', 'description' => 'Hasil Pengelolaan Aset & BUMDes', 'budget_amount' => 120000000, 'realized_amount' => 124500000, 'notes' => 'Melampaui target 103.8%'],
+            ['type' => 'Pendapatan', 'category' => 'Dana Desa (DD)', 'description' => 'Transfer Dana Desa dari APBN', 'budget_amount' => 1120000000, 'realized_amount' => 1120000000, 'notes' => 'Terealisasi 100%'],
+            ['type' => 'Pendapatan', 'category' => 'Alokasi Dana Desa (ADD)', 'description' => 'Alokasi Dana Desa dari APBD Kabupaten', 'budget_amount' => 590000000, 'realized_amount' => 590000000, 'notes' => 'Terealisasi 100%'],
+            ['type' => 'Belanja', 'category' => 'Bidang Penyelenggaraan Pemerintahan', 'description' => 'Operasional Pemerintahan & Layanan Publik', 'budget_amount' => 550000000, 'realized_amount' => 538000000, 'notes' => 'Efisiensi belanja ATK'],
+            ['type' => 'Belanja', 'category' => 'Bidang Pelaksanaan Pembangunan', 'description' => 'Drainase Dusun I & II serta Lampu Jalan Tenaga Surya', 'budget_amount' => 760000000, 'realized_amount' => 745000000, 'notes' => 'Seluruh pekerjaan fisik selesai'],
+            ['type' => 'Belanja', 'category' => 'Bidang Pembinaan Kemasyarakatan', 'description' => 'Kegiatan Kepemudaan, PKK & Posyandu', 'budget_amount' => 195000000, 'realized_amount' => 190000000, 'notes' => 'Berjalan sesuai jadwal'],
+            ['type' => 'Belanja', 'category' => 'Bidang Pemberdayaan Masyarakat', 'description' => 'Bantuan Alat Pertanian & Pelatihan Pengolahan Kopi', 'budget_amount' => 255000000, 'realized_amount' => 242000000, 'notes' => 'Disalurkan ke 4 kelompok tani'],
+            ['type' => 'Belanja', 'category' => 'Bidang Penanggulangan Bencana', 'description' => 'BLT Dana Desa & Mitigasi Longsor', 'budget_amount' => 120000000, 'realized_amount' => 119500000, 'notes' => 'Tersalurkan penuh'],
         ];
 
         if ($year2025->items()->count() === 0) {
@@ -234,12 +235,12 @@ class DatabaseSeeder extends Seeder
             }
         }
 
-        // 7. Galleries (Ilustrasi Demo)
+        // 7. Galleries (Dummy)
         $galleries = [
-            ['title' => 'Panorama Pegunungan Desa Kalisari', 'category' => 'Wisata', 'image' => 'galleries/panorama-kalisari.jpg', 'caption' => 'Pemandangan pagi hari kawasan pertanian dataran tinggi Desa Kalisari, Kecamatan Blado.', 'taken_at' => now()->subDays(10)->toDateString()],
-            ['title' => 'Pesona Alam Curug Arjuna', 'category' => 'Wisata', 'image' => 'galleries/curug-arjuna.jpg', 'caption' => 'Air terjun Curug Arjuna di Dukuh Kalisari dengan aliran air pegunungan yang jernih.', 'taken_at' => now()->subDays(8)->toDateString()],
-            ['title' => 'Musyawarah Desa Kalisari', 'category' => 'Kegiatan', 'image' => 'galleries/musdes-kalisari.jpg', 'caption' => 'Suasana musyawarah warga bersama perangkat desa di Balai Desa Kalisari.', 'taken_at' => now()->subDays(5)->toDateString()],
-            ['title' => 'Gotong Royong Kerja Bakti Warga', 'category' => 'Kegiatan', 'image' => 'galleries/kerja-bakti-kalisari.jpg', 'caption' => 'Kegiatan bersih desa dan penghijauan lingkungan bersama warga Desa Kalisari.', 'taken_at' => now()->subDays(2)->toDateString()],
+            ['title' => 'Panorama Pagi Desa Sukamaju', 'category' => 'Wisata', 'image' => 'galleries/panorama-kalisari.jpg', 'caption' => 'Pemandangan pagi hari kawasan perbukitan dan pertanian Desa Sukamaju.', 'taken_at' => now()->subDays(10)->toDateString()],
+            ['title' => 'Pesona Alam Air Terjun Desa', 'category' => 'Wisata', 'image' => 'galleries/curug-arjuna.jpg', 'caption' => 'Destinasi wisata air terjun alami di kawasan Agrowisata Bukit Pinang.', 'taken_at' => now()->subDays(8)->toDateString()],
+            ['title' => 'Musyawarah Desa RKPDes', 'category' => 'Kegiatan', 'image' => 'galleries/musdes-kalisari.jpg', 'caption' => 'Suasana musyawarah warga bersama perangkat desa di Balai Desa Sukamaju.', 'taken_at' => now()->subDays(5)->toDateString()],
+            ['title' => 'Gotong Royong Kerja Bakti Warga', 'category' => 'Kegiatan', 'image' => 'galleries/kerja-bakti-kalisari.jpg', 'caption' => 'Kegiatan bersih desa dan penghijauan lingkungan bersama warga.', 'taken_at' => now()->subDays(2)->toDateString()],
         ];
 
         foreach ($galleries as $item) {
