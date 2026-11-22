@@ -47,9 +47,11 @@
             </button>
         </form>
 
-        <div class="mt-6 pt-5 border-t border-slate-100 text-center text-xs text-slate-500">
-            Demo akun: <span class="font-mono text-slate-700">admin@desasukamaju.id</span> / <span class="font-mono text-slate-700">password</span>
-        </div>
+        @if(app()->environment('local'))
+            <div class="mt-6 pt-5 border-t border-slate-100 text-center text-xs text-slate-500">
+                Demo akun (Lokal): <span class="font-mono text-slate-700">admin@desasukamaju.id</span> / <span class="font-mono text-slate-700">password</span>
+            </div>
+        @endif
     </div>
 </div>
 @endsection

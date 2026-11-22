@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="@yield('meta_description', ($villageProfile?->name ?? 'Portal Resmi Desa') . ' - Informasi Profil Desa, Potensi, Berita, dan Transparansi Keuangan APBDes.')">
+    @if($villageProfile?->logo)
+        <link rel="icon" href="{{ asset('storage/' . $villageProfile->logo) }}">
+    @else
+        <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23047857'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='55' font-family='sans-serif' font-weight='bold'>{{ strtoupper(substr($villageProfile?->name ?? 'D', 0, 1)) }}</text></svg>">
+    @endif
     <title>@yield('title', $villageProfile?->name ?? 'Portal Resmi Desa')</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -77,10 +83,6 @@
                         <a href="{{ route('admin.dashboard') }}" class="hidden sm:inline-flex items-center px-4 py-2 rounded-lg bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800 transition shadow-sm">
                             Dashboard Admin
                         </a>
-                    @else
-                        <a href="{{ route('login') }}" class="hidden sm:inline-flex items-center px-4 py-2 rounded-lg border border-slate-300 text-slate-700 text-sm font-semibold hover:bg-slate-50 transition">
-                            Login Admin
-                        </a>
                     @endauth
 
                     <button @click="mobileMenu = !mobileMenu" type="button" class="lg:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 focus:outline-none" aria-label="Buka Menu">
@@ -99,13 +101,11 @@
                     {{ $link['label'] }}
                 </a>
             @endforeach
-            <div class="pt-3 border-t border-slate-100">
-                @auth
+            @auth
+                <div class="pt-3 border-t border-slate-100">
                     <a href="{{ route('admin.dashboard') }}" class="block w-full text-center px-4 py-2.5 rounded-lg bg-emerald-700 text-white text-sm font-semibold">Dashboard Admin</a>
-                @else
-                    <a href="{{ route('login') }}" class="block w-full text-center px-4 py-2.5 rounded-lg border border-slate-300 text-slate-700 text-sm font-semibold">Login Admin</a>
-                @endauth
-            </div>
+                </div>
+            @endauth
         </div>
     </header>
 
@@ -120,9 +120,13 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div class="lg:col-span-2">
                     <div class="flex items-center space-x-3 mb-4">
-                        <div class="h-10 w-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold text-lg">
-                            {{ strtoupper(substr($villageProfile?->name ?? 'D', 0, 1)) }}
-                        </div>
+                        @if($villageProfile?->logo)
+                            <img src="{{ asset('storage/' . $villageProfile->logo) }}" alt="Logo Desa" class="h-10 w-10 rounded-xl object-cover bg-white">
+                        @else
+                            <div class="h-10 w-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold text-lg">
+                                {{ strtoupper(substr($villageProfile?->name ?? 'D', 0, 1)) }}
+                            </div>
+                        @endif
                         <div>
                             <div class="font-bold text-white text-lg">{{ $villageProfile?->name ?? 'Desa Sukamaju' }}</div>
                             <div class="text-xs text-emerald-400">{{ $villageProfile?->tagline ?? 'Maju, Mandiri & Transparan' }}</div>
@@ -163,7 +167,10 @@
 
             <div class="border-t border-slate-800 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-3">
                 <p>&copy; {{ date('Y') }} Pemerintah {{ $villageProfile?->name ?? 'Desa Sukamaju' }}. Seluruh hak cipta dilindungi.</p>
-                <p>Transparansi &amp; Pelayanan Publik Digital</p>
+                <div class="flex items-center space-x-4">
+                    <span>Transparansi &amp; Pelayanan Publik Digital</span>
+                    <a href="{{ route('login') }}" class="text-slate-600 hover:text-slate-400 transition">Portal Admin</a>
+                </div>
             </div>
         </div>
     </footer>

@@ -3,9 +3,12 @@
 @section('page_title', 'Potensi & UMKM Desa')
 
 @section('content')
-    <div class="flex justify-between items-center mb-6">
-        <p class="text-sm text-slate-600">Kelola potensi wisata, UMKM, pertanian, dan budaya desa.</p>
-        <a href="{{ route('admin.potentials.create') }}" class="px-4 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-sm font-semibold transition">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+        <form action="{{ route('admin.potentials.index') }}" method="GET" class="flex gap-2">
+            <input type="text" name="q" value="{{ $search ?? '' }}" placeholder="Cari judul potensi..." class="w-full sm:w-64 rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-sm outline-none focus:border-emerald-600">
+            <button type="submit" class="px-4 py-2 rounded-xl border border-slate-300 bg-white text-slate-700 text-sm font-semibold hover:bg-slate-50">Cari</button>
+        </form>
+        <a href="{{ route('admin.potentials.create') }}" class="px-4 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-sm font-semibold transition text-center">
             + Tambah Potensi
         </a>
     </div>

@@ -9,11 +9,16 @@ use Illuminate\Support\Facades\Storage;
 
 class PotentialController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $potentials = Potential::latest()->paginate(12);
+        $search = $request->query('q');
+        $potentials = Potential::query()
+            ->when($search, fn ($q) => $q->where('title', 'like', "%{$search}%"))
+            ->latest()
+            ->paginate(12)
+            ->withQueryString();
 
-        return view('admin.potentials.index', compact('potentials'));
+        return view('admin.potentials.index', compact('potentials', 'search'));
     }
 
     public function create()

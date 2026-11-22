@@ -43,5 +43,6 @@ class WebsiteDesaTest extends TestCase
         $this->actingAs($user)->get('/admin/informasi')->assertStatus(200);
         $this->actingAs($user)->get('/admin/galeri')->assertStatus(200);
         $this->actingAs($user)->get('/admin/keuangan')->assertStatus(200);
+        $this->actingAs($user)->get('/admin/akun')->assertStatus(200);
     }
 }

@@ -26,7 +26,18 @@
                     @forelse($officials as $official)
                         <tr class="hover:bg-slate-50">
                             <td class="px-6 py-4 font-semibold">{{ $official->order }}</td>
-                            <td class="px-6 py-4 font-bold text-slate-900">{{ $official->name }}</td>
+                            <td class="px-6 py-4">
+                                <div class="flex items-center space-x-3">
+                                    @if($official->photo)
+                                        <img src="{{ asset('storage/' . $official->photo) }}" alt="{{ $official->name }}" class="w-9 h-9 rounded-lg object-cover flex-shrink-0">
+                                    @else
+                                        <div class="w-9 h-9 rounded-lg bg-emerald-100 text-emerald-800 font-bold text-xs flex items-center justify-center flex-shrink-0">
+                                            {{ strtoupper(substr($official->name, 0, 1)) }}
+                                        </div>
+                                    @endif
+                                    <span class="font-bold text-slate-900">{{ $official->name }}</span>
+                                </div>
+                            </td>
                             <td class="px-6 py-4 text-slate-600">{{ $official->position }}</td>
                             <td class="px-6 py-4">
                                 <span class="px-2.5 py-1 rounded-full text-xs font-semibold {{ $official->is_active ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-100 text-slate-600' }}">

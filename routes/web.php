@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AccountController as AdminAccountController;
 use App\Http\Controllers\Admin\BudgetController as AdminBudgetController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\GalleryController as AdminGalleryController;
@@ -37,6 +38,9 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
 
     Route::get('/profil', [AdminProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profil', [AdminProfileController::class, 'update'])->name('profile.update');
+
+    Route::get('/akun', [AdminAccountController::class, 'edit'])->name('account.edit');
+    Route::put('/akun', [AdminAccountController::class, 'update'])->name('account.update');
 
     Route::resource('perangkat', AdminOfficialController::class)
         ->names('officials')

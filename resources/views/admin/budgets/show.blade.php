@@ -91,16 +91,20 @@
     </div>
 </div>
 
-<!-- Tabel Rincian dengan Pencarian, Filter & Pagination -->
+<!-- Tabel Rincian dengan Pencarian, Filter, Edit Modal & Pagination -->
 @php
     $adminBudgetItems = $budgetYear->items->map(fn ($item) => [
         'id' => $item->id,
         'type' => $item->type,
         'category' => $item->category,
         'description' => $item->description,
+        'budget_amount' => $item->budget_amount,
+        'realized_amount' => $item->realized_amount,
+        'notes' => $item->notes ?? '',
         'budget_formatted' => \App\Helpers\FormatHelper::rupiah($item->budget_amount),
         'realized_formatted' => \App\Helpers\FormatHelper::rupiah($item->realized_amount),
         'percentage' => $item->percentage,
+        'update_url' => route('admin.budgets.items.update', $item),
         'delete_url' => route('admin.budgets.items.destroy', $item),
     ])->values();
 @endphp
@@ -112,6 +116,7 @@
          typeFilter: '',
          page: 1,
          perPage: 10,
+         editingItem: null,
          get filtered() {
              const q = this.search.toLowerCase();
              return this.items.filter(i => {
@@ -171,8 +176,9 @@
                         </td>
                         <td class="px-5 py-3.5 text-right font-medium whitespace-nowrap" x-text="item.budget_formatted"></td>
                         <td class="px-5 py-3.5 text-right font-bold text-emerald-700 whitespace-nowrap" x-text="item.realized_formatted + ' (' + item.percentage + '%)'"></td>
-                        <td class="px-5 py-3.5 text-right">
-                            <form :action="item.delete_url" method="POST" onsubmit="return confirm('Hapus item ini?')">
+                        <td class="px-5 py-3.5 text-right whitespace-nowrap space-x-3">
+                            <button type="button" @click="editingItem = { ...item }" class="text-emerald-700 text-xs font-semibold hover:underline">Edit</button>
+                            <form :action="item.delete_url" method="POST" class="inline" onsubmit="return confirm('Hapus item ini?')">
                                 @csrf @method('DELETE')
                                 <button type="submit" class="text-rose-600 text-xs font-semibold hover:underline">Hapus</button>
                             </form>
@@ -197,6 +203,57 @@
                     class="px-3 py-1.5 rounded-lg border border-slate-300 bg-white font-semibold text-slate-700 disabled:opacity-40 hover:bg-slate-50">
                 Berikutnya &rarr;
             </button>
+        </div>
+    </div>
+
+    <!-- Modal Edit Rincian -->
+    <div x-show="editingItem" x-cloak @click.self="editingItem = null" class="fixed inset-0 z-50 bg-slate-900/50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-xl" x-show="editingItem">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
+                <h3 class="font-bold text-slate-900">Edit Rincian Anggaran</h3>
+                <button type="button" @click="editingItem = null" class="text-slate-400 hover:text-slate-600 text-sm font-bold">&times;</button>
+            </div>
+            <template x-if="editingItem">
+                <form :action="editingItem.update_url" method="POST" class="space-y-3 text-sm">
+                    @csrf @method('PUT')
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Jenis</label>
+                            <select name="type" x-model="editingItem.type" required class="w-full rounded-xl border border-slate-300 px-3.5 py-2">
+                                <option value="Pendapatan">Pendapatan</option>
+                                <option value="Belanja">Belanja</option>
+                                <option value="Pembiayaan">Pembiayaan</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Bidang / Kategori</label>
+                            <input type="text" name="category" x-model="editingItem.category" required class="w-full rounded-xl border border-slate-300 px-3.5 py-2">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Uraian Kegiatan / Sumber Dana</label>
+                        <input type="text" name="description" x-model="editingItem.description" required class="w-full rounded-xl border border-slate-300 px-3.5 py-2">
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Anggaran (Rp)</label>
+                            <input type="number" name="budget_amount" x-model="editingItem.budget_amount" min="0" required class="w-full rounded-xl border border-slate-300 px-3.5 py-2">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Realisasi (Rp)</label>
+                            <input type="number" name="realized_amount" x-model="editingItem.realized_amount" min="0" required class="w-full rounded-xl border border-slate-300 px-3.5 py-2">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Catatan (Opsional)</label>
+                        <input type="text" name="notes" x-model="editingItem.notes" class="w-full rounded-xl border border-slate-300 px-3.5 py-2">
+                    </div>
+                    <div class="pt-3 flex justify-end space-x-2">
+                        <button type="button" @click="editingItem = null" class="px-4 py-2 rounded-xl border border-slate-300 text-slate-700 font-semibold hover:bg-slate-50">Batal</button>
+                        <button type="submit" class="px-4 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-semibold">Simpan Perubahan</button>
+                    </div>
+                </form>
+            </template>
         </div>
     </div>
 </div>

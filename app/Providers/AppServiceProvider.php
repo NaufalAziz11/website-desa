@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\VillageProfile;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -16,6 +17,8 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        Carbon::setLocale('id');
+
         View::composer('*', function ($view) {
             static $villageProfile = null;
             static $checked = false;

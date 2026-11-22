@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @if($villageProfile?->logo)
+        <link rel="icon" href="{{ asset('storage/' . $villageProfile->logo) }}">
+    @else
+        <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23047857'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='55' font-family='sans-serif' font-weight='bold'>{{ strtoupper(substr($villageProfile?->name ?? 'D', 0, 1)) }}</text></svg>">
+    @endif
     <title>@yield('title', 'Admin Panel') - {{ $villageProfile?->name ?? 'Website Desa' }}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,9 +25,13 @@
                class="fixed inset-y-0 left-0 z-50 w-64 bg-slate-900 text-slate-300 transform transition-transform duration-200 ease-in-out lg:translate-x-0 lg:static lg:inset-0 flex flex-col">
             <div class="h-16 flex items-center justify-between px-6 border-b border-slate-800">
                 <a href="{{ route('admin.dashboard') }}" class="flex items-center space-x-2.5">
-                    <div class="h-8 w-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold">
-                        {{ strtoupper(substr($villageProfile?->name ?? 'D', 0, 1)) }}
-                    </div>
+                    @if($villageProfile?->logo)
+                        <img src="{{ asset('storage/' . $villageProfile->logo) }}" alt="Logo Desa" class="h-8 w-8 rounded-lg object-cover bg-white">
+                    @else
+                        <div class="h-8 w-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold">
+                            {{ strtoupper(substr($villageProfile?->name ?? 'D', 0, 1)) }}
+                        </div>
+                    @endif
                     <span class="font-bold text-white text-sm tracking-wide">ADMIN DESA</span>
                 </a>
                 <button @click="sidebarOpen = false" class="lg:hidden text-slate-400 hover:text-white">
@@ -40,6 +49,7 @@
                         ['route' => 'admin.posts.index', 'pattern' => 'admin.posts.*', 'label' => 'Berita & Informasi'],
                         ['route' => 'admin.budgets.index', 'pattern' => 'admin.budgets.*', 'label' => 'Transparansi APBDes'],
                         ['route' => 'admin.galleries.index', 'pattern' => 'admin.galleries.*', 'label' => 'Galeri Foto'],
+                        ['route' => 'admin.account.edit', 'pattern' => 'admin.account.*', 'label' => 'Pengaturan Akun'],
                     ];
                 @endphp
                 @foreach($menus as $menu)
