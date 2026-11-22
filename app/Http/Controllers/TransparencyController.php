@@ -39,12 +39,15 @@ class TransparencyController extends Controller
                 'silpa' => $pendapatan['realized'] - $belanja['realized'],
             ];
 
+            $belanjaGrouped = $belanjaItems->groupBy('category');
+            $pendapatanGrouped = $pendapatanItems->groupBy('category');
+
             $chartData = [
-                'belanjaLabels' => $belanjaItems->pluck('category')->values()->toArray(),
-                'belanjaBudgets' => $belanjaItems->pluck('budget_amount')->values()->toArray(),
-                'belanjaRealized' => $belanjaItems->pluck('realized_amount')->values()->toArray(),
-                'pendapatanLabels' => $pendapatanItems->pluck('category')->values()->toArray(),
-                'pendapatanRealized' => $pendapatanItems->pluck('realized_amount')->values()->toArray(),
+                'belanjaLabels' => $belanjaGrouped->keys()->values()->toArray(),
+                'belanjaBudgets' => $belanjaGrouped->map(fn ($group) => $group->sum('budget_amount'))->values()->toArray(),
+                'belanjaRealized' => $belanjaGrouped->map(fn ($group) => $group->sum('realized_amount'))->values()->toArray(),
+                'pendapatanLabels' => $pendapatanGrouped->keys()->values()->toArray(),
+                'pendapatanRealized' => $pendapatanGrouped->map(fn ($group) => $group->sum('realized_amount'))->values()->toArray(),
             ];
         }
 

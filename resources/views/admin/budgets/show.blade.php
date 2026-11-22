@@ -91,8 +91,61 @@
     </div>
 </div>
 
-<!-- Tabel Rincian -->
-<div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+<!-- Tabel Rincian dengan Pencarian, Filter & Pagination -->
+@php
+    $adminBudgetItems = $budgetYear->items->map(fn ($item) => [
+        'id' => $item->id,
+        'type' => $item->type,
+        'category' => $item->category,
+        'description' => $item->description,
+        'budget_formatted' => \App\Helpers\FormatHelper::rupiah($item->budget_amount),
+        'realized_formatted' => \App\Helpers\FormatHelper::rupiah($item->realized_amount),
+        'percentage' => $item->percentage,
+        'delete_url' => route('admin.budgets.items.destroy', $item),
+    ])->values();
+@endphp
+
+<div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden"
+     x-data="{
+         items: @js($adminBudgetItems),
+         search: '',
+         typeFilter: '',
+         page: 1,
+         perPage: 10,
+         get filtered() {
+             const q = this.search.toLowerCase();
+             return this.items.filter(i => {
+                 const matchType = !this.typeFilter || i.type === this.typeFilter;
+                 const matchText = !q || i.category.toLowerCase().includes(q) || i.description.toLowerCase().includes(q);
+                 return matchType && matchText;
+             });
+         },
+         get totalPages() {
+             return Math.max(1, Math.ceil(this.filtered.length / this.perPage));
+         },
+         get paginated() {
+             if (this.page > this.totalPages) this.page = 1;
+             const start = (this.page - 1) * this.perPage;
+             return this.filtered.slice(start, start + this.perPage);
+         }
+     }">
+    <div class="p-4 sm:px-5 bg-slate-50/70 border-b border-slate-200 flex flex-col sm:flex-row gap-3 justify-between items-stretch sm:items-center">
+        <div class="flex flex-col sm:flex-row gap-2.5 flex-1">
+            <input type="text" x-model="search" @input="page = 1" placeholder="Cari kategori atau uraian..."
+                   class="w-full sm:w-64 rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-xs sm:text-sm outline-none focus:border-emerald-600">
+            <select x-model="typeFilter" @change="page = 1"
+                    class="w-full sm:w-48 rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-xs sm:text-sm outline-none focus:border-emerald-600">
+                <option value="">Semua Jenis</option>
+                <option value="Pendapatan">Pendapatan</option>
+                <option value="Belanja">Belanja</option>
+                <option value="Pembiayaan">Pembiayaan</option>
+            </select>
+        </div>
+        <div class="text-xs text-slate-500">
+            Menampilkan <strong x-text="paginated.length"></strong> dari <strong x-text="filtered.length"></strong> data
+        </div>
+    </div>
+
     <div class="overflow-x-auto">
         <table class="min-w-full divide-y divide-slate-200 text-sm">
             <thead class="bg-slate-50 text-slate-600 text-xs uppercase font-bold">
@@ -105,31 +158,46 @@
                 </tr>
             </thead>
             <tbody class="divide-y divide-slate-100">
-                @forelse($budgetYear->items as $item)
+                <template x-for="item in paginated" :key="item.id">
                     <tr class="hover:bg-slate-50">
                         <td class="px-5 py-3.5">
-                            <span class="px-2.5 py-1 rounded-full text-xs font-semibold {{ $item->type === 'Pendapatan' ? 'bg-emerald-100 text-emerald-800' : ($item->type === 'Belanja' ? 'bg-amber-100 text-amber-800' : 'bg-sky-100 text-sky-800') }}">
-                                {{ $item->type }}
-                            </span>
+                            <span class="px-2.5 py-1 rounded-full text-xs font-semibold"
+                                  :class="item.type === 'Pendapatan' ? 'bg-emerald-100 text-emerald-800' : (item.type === 'Belanja' ? 'bg-amber-100 text-amber-800' : 'bg-sky-100 text-sky-800')"
+                                  x-text="item.type"></span>
                         </td>
                         <td class="px-5 py-3.5">
-                            <div class="font-bold text-slate-900">{{ $item->category }}</div>
-                            <div class="text-xs text-slate-600">{{ $item->description }}</div>
+                            <div class="font-bold text-slate-900" x-text="item.category"></div>
+                            <div class="text-xs text-slate-600" x-text="item.description"></div>
                         </td>
-                        <td class="px-5 py-3.5 text-right font-medium">{{ \App\Helpers\FormatHelper::rupiah($item->budget_amount) }}</td>
-                        <td class="px-5 py-3.5 text-right font-bold text-emerald-700">{{ \App\Helpers\FormatHelper::rupiah($item->realized_amount) }} ({{ $item->percentage }}%)</td>
+                        <td class="px-5 py-3.5 text-right font-medium whitespace-nowrap" x-text="item.budget_formatted"></td>
+                        <td class="px-5 py-3.5 text-right font-bold text-emerald-700 whitespace-nowrap" x-text="item.realized_formatted + ' (' + item.percentage + '%)'"></td>
                         <td class="px-5 py-3.5 text-right">
-                            <form action="{{ route('admin.budgets.items.destroy', $item) }}" method="POST" onsubmit="return confirm('Hapus item ini?')">
+                            <form :action="item.delete_url" method="POST" onsubmit="return confirm('Hapus item ini?')">
                                 @csrf @method('DELETE')
                                 <button type="submit" class="text-rose-600 text-xs font-semibold hover:underline">Hapus</button>
                             </form>
                         </td>
                     </tr>
-                @empty
-                    <tr><td colspan="5" class="px-5 py-8 text-center text-slate-500">Belum ada rincian anggaran.</td></tr>
-                @endforelse
+                </template>
+                <tr x-show="paginated.length === 0">
+                    <td colspan="5" class="px-5 py-8 text-center text-slate-500">Tidak ada rincian anggaran yang sesuai.</td>
+                </tr>
             </tbody>
         </table>
+    </div>
+
+    <div x-show="totalPages > 1" class="px-5 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs">
+        <span class="text-slate-500">Halaman <strong x-text="page"></strong> dari <strong x-text="totalPages"></strong></span>
+        <div class="flex space-x-2">
+            <button @click="if (page > 1) page--" :disabled="page <= 1"
+                    class="px-3 py-1.5 rounded-lg border border-slate-300 bg-white font-semibold text-slate-700 disabled:opacity-40 hover:bg-slate-50">
+                &larr; Sebelumnya
+            </button>
+            <button @click="if (page < totalPages) page++" :disabled="page >= totalPages"
+                    class="px-3 py-1.5 rounded-lg border border-slate-300 bg-white font-semibold text-slate-700 disabled:opacity-40 hover:bg-slate-50">
+                Berikutnya &rarr;
+            </button>
+        </div>
     </div>
 </div>
 @endsection

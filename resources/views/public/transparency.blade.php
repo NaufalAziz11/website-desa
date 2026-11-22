@@ -86,58 +86,126 @@
                 </div>
             </div>
 
-            <!-- Rincian Tabel Interaktif -->
+            <!-- Rincian Tabel Interaktif dengan Pencarian, Filter & Pagination -->
             <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
                 <div class="border-b border-slate-200 px-6 pt-4 flex flex-wrap gap-2">
-                    @foreach(['Belanja', 'Pendapatan', 'Pembiayaan'] as $tab)
+                    @foreach(['Belanja' => $belanjaItems, 'Pendapatan' => $pendapatanItems, 'Pembiayaan' => $pembiayaanItems] as $tab => $tabItems)
                         <button @click="activeTab = '{{ $tab }}'"
                                 :class="activeTab === '{{ $tab }}' ? 'border-emerald-700 text-emerald-700 bg-emerald-50/50' : 'border-transparent text-slate-500 hover:text-slate-800'"
-                                class="px-4 py-3 text-sm font-bold border-b-2 transition rounded-t-lg">
-                            Rincian {{ $tab }}
+                                class="px-4 py-3 text-sm font-bold border-b-2 transition rounded-t-lg inline-flex items-center space-x-2">
+                            <span>Rincian {{ $tab }}</span>
+                            <span class="px-2 py-0.5 rounded-full text-xs bg-slate-100 text-slate-600">{{ $tabItems->count() }}</span>
                         </button>
                     @endforeach
                 </div>
 
                 @foreach(['Belanja' => $belanjaItems, 'Pendapatan' => $pendapatanItems, 'Pembiayaan' => $pembiayaanItems] as $tabName => $items)
-                    <div x-show="activeTab === '{{ $tabName }}'" class="overflow-x-auto">
-                        <table class="min-w-full divide-y divide-slate-200 text-sm">
-                            <thead class="bg-slate-50 text-slate-600 text-xs uppercase font-bold">
-                                <tr>
-                                    <th class="px-6 py-3.5 text-left">Bidang / Kategori</th>
-                                    <th class="px-6 py-3.5 text-left">Uraian</th>
-                                    <th class="px-6 py-3.5 text-right">Anggaran</th>
-                                    <th class="px-6 py-3.5 text-right">Realisasi</th>
-                                    <th class="px-6 py-3.5 text-center w-36">Serapan</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-100">
-                                @forelse($items as $item)
-                                    <tr class="hover:bg-slate-50/70">
-                                        <td class="px-6 py-4 font-semibold text-slate-900">{{ $item->category }}</td>
-                                        <td class="px-6 py-4 text-slate-600">
-                                            <div>{{ $item->description }}</div>
-                                            @if($item->notes)
-                                                <div class="text-xs text-slate-400 mt-0.5">{{ $item->notes }}</div>
-                                            @endif
-                                        </td>
-                                        <td class="px-6 py-4 text-right font-medium text-slate-800 whitespace-nowrap">{{ \App\Helpers\FormatHelper::rupiah($item->budget_amount) }}</td>
-                                        <td class="px-6 py-4 text-right font-bold text-emerald-700 whitespace-nowrap">{{ \App\Helpers\FormatHelper::rupiah($item->realized_amount) }}</td>
-                                        <td class="px-6 py-4">
-                                            <div class="flex items-center space-x-2">
-                                                <div class="flex-1 bg-slate-200 rounded-full h-2">
-                                                    <div class="bg-emerald-600 h-2 rounded-full" style="width: {{ $item->percentage }}%"></div>
-                                                </div>
-                                                <span class="text-xs font-bold text-slate-700 w-10 text-right">{{ $item->percentage }}%</span>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @empty
+                    @php
+                        $mappedItems = $items->map(fn ($item) => [
+                            'category' => $item->category,
+                            'description' => $item->description,
+                            'notes' => $item->notes,
+                            'budget_formatted' => \App\Helpers\FormatHelper::rupiah($item->budget_amount),
+                            'realized_formatted' => \App\Helpers\FormatHelper::rupiah($item->realized_amount),
+                            'percentage' => $item->percentage,
+                        ])->values();
+                        $uniqueCategories = $items->pluck('category')->unique()->values();
+                    @endphp
+                    <div x-show="activeTab === '{{ $tabName }}'"
+                         x-data="{
+                             items: @js($mappedItems),
+                             search: '',
+                             categoryFilter: '',
+                             page: 1,
+                             perPage: 10,
+                             get filtered() {
+                                 const q = this.search.toLowerCase();
+                                 return this.items.filter(i => {
+                                     const matchCat = !this.categoryFilter || i.category === this.categoryFilter;
+                                     const matchText = !q || i.category.toLowerCase().includes(q) || i.description.toLowerCase().includes(q) || (i.notes && i.notes.toLowerCase().includes(q));
+                                     return matchCat && matchText;
+                                 });
+                             },
+                             get totalPages() {
+                                 return Math.max(1, Math.ceil(this.filtered.length / this.perPage));
+                             },
+                             get paginated() {
+                                 if (this.page > this.totalPages) this.page = 1;
+                                 const start = (this.page - 1) * this.perPage;
+                                 return this.filtered.slice(start, start + this.perPage);
+                             }
+                         }">
+
+                        <!-- Filter & Search Bar -->
+                        <div class="p-4 sm:px-6 bg-slate-50/70 border-b border-slate-100 flex flex-col sm:flex-row gap-3 justify-between items-stretch sm:items-center">
+                            <div class="flex flex-col sm:flex-row gap-2.5 flex-1">
+                                <input type="text" x-model="search" @input="page = 1" placeholder="Cari uraian / bidang {{ strtolower($tabName) }}..."
+                                       class="w-full sm:w-64 rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-xs sm:text-sm outline-none focus:border-emerald-600">
+                                <select x-model="categoryFilter" @change="page = 1"
+                                        class="w-full sm:w-60 rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-xs sm:text-sm outline-none focus:border-emerald-600">
+                                    <option value="">Semua Bidang / Kategori</option>
+                                    @foreach($uniqueCategories as $cat)
+                                        <option value="{{ $cat }}">{{ $cat }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="text-xs text-slate-500">
+                                Menampilkan <strong x-text="paginated.length"></strong> dari <strong x-text="filtered.length"></strong> data
+                            </div>
+                        </div>
+
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-slate-200 text-sm">
+                                <thead class="bg-slate-50 text-slate-600 text-xs uppercase font-bold">
                                     <tr>
-                                        <td colspan="5" class="px-6 py-8 text-center text-slate-500">Belum ada rincian {{ strtolower($tabName) }} untuk tahun ini.</td>
+                                        <th class="px-6 py-3.5 text-left">Bidang / Kategori</th>
+                                        <th class="px-6 py-3.5 text-left">Uraian</th>
+                                        <th class="px-6 py-3.5 text-right">Anggaran</th>
+                                        <th class="px-6 py-3.5 text-right">Realisasi</th>
+                                        <th class="px-6 py-3.5 text-center w-36">Serapan</th>
                                     </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100">
+                                    <template x-for="(item, idx) in paginated" :key="idx">
+                                        <tr class="hover:bg-slate-50/70">
+                                            <td class="px-6 py-4 font-semibold text-slate-900" x-text="item.category"></td>
+                                            <td class="px-6 py-4 text-slate-600">
+                                                <div x-text="item.description"></div>
+                                                <div class="text-xs text-slate-400 mt-0.5" x-show="item.notes" x-text="item.notes"></div>
+                                            </td>
+                                            <td class="px-6 py-4 text-right font-medium text-slate-800 whitespace-nowrap" x-text="item.budget_formatted"></td>
+                                            <td class="px-6 py-4 text-right font-bold text-emerald-700 whitespace-nowrap" x-text="item.realized_formatted"></td>
+                                            <td class="px-6 py-4">
+                                                <div class="flex items-center space-x-2">
+                                                    <div class="flex-1 bg-slate-200 rounded-full h-2">
+                                                        <div class="bg-emerald-600 h-2 rounded-full" :style="'width: ' + item.percentage + '%'"></div>
+                                                    </div>
+                                                    <span class="text-xs font-bold text-slate-700 w-10 text-right" x-text="item.percentage + '%'"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </template>
+                                    <tr x-show="paginated.length === 0">
+                                        <td colspan="5" class="px-6 py-8 text-center text-slate-500">Tidak ada rincian {{ strtolower($tabName) }} yang sesuai.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Pagination Controls -->
+                        <div x-show="totalPages > 1" class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs">
+                            <span class="text-slate-500">Halaman <strong x-text="page"></strong> dari <strong x-text="totalPages"></strong></span>
+                            <div class="flex space-x-2">
+                                <button @click="if (page > 1) page--" :disabled="page <= 1"
+                                        class="px-3 py-1.5 rounded-lg border border-slate-300 bg-white font-semibold text-slate-700 disabled:opacity-40 hover:bg-slate-50">
+                                    &larr; Sebelumnya
+                                </button>
+                                <button @click="if (page < totalPages) page++" :disabled="page >= totalPages"
+                                        class="px-3 py-1.5 rounded-lg border border-slate-300 bg-white font-semibold text-slate-700 disabled:opacity-40 hover:bg-slate-50">
+                                    Berikutnya &rarr;
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 @endforeach
             </div>
