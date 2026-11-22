@@ -29,9 +29,9 @@
                             <td class="px-6 py-4">
                                 <div class="flex items-center space-x-3">
                                     @if($official->photo)
-                                        <img src="{{ asset('storage/' . $official->photo) }}" alt="{{ $official->name }}" class="w-9 h-9 rounded-lg object-cover flex-shrink-0">
+                                        <img src="{{ asset('storage/' . $official->photo) }}" alt="{{ $official->name }}" style="width: 36px; height: 36px;" class="w-9 h-9 rounded-lg object-cover flex-shrink-0">
                                     @else
-                                        <div class="w-9 h-9 rounded-lg bg-emerald-100 text-emerald-800 font-bold text-xs flex items-center justify-center flex-shrink-0">
+                                        <div style="width: 36px; height: 36px;" class="w-9 h-9 rounded-lg bg-emerald-100 text-emerald-800 font-bold text-xs flex items-center justify-center flex-shrink-0">
                                             {{ strtoupper(substr($official->name, 0, 1)) }}
                                         </div>
                                     @endif

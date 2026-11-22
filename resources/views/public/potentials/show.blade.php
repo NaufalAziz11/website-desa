@@ -16,7 +16,7 @@
                 <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">
                     {{ $potential->category }}
                 </span>
-                <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-3">{{ $potential->title }}</h1>
+                <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-3 break-words">{{ $potential->title }}</h1>
 
                 <div class="mt-4 flex flex-wrap gap-4 text-sm text-slate-500 border-b border-slate-100 pb-6">
                     @if($potential->location)
@@ -27,7 +27,7 @@
                     @endif
                 </div>
 
-                <div class="mt-6 text-slate-700 leading-relaxed whitespace-pre-line text-sm sm:text-base">
+                <div class="mt-6 text-slate-700 leading-relaxed whitespace-pre-line break-words text-sm sm:text-base">
                     {{ $potential->description }}
                 </div>
             </div>

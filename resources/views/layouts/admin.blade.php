@@ -26,7 +26,7 @@
             <div class="h-16 flex items-center justify-between px-6 border-b border-slate-800">
                 <a href="{{ route('admin.dashboard') }}" class="flex items-center space-x-2.5">
                     @if($villageProfile?->logo)
-                        <img src="{{ asset('storage/' . $villageProfile->logo) }}" alt="Logo Desa" class="h-8 w-8 rounded-lg object-cover bg-white">
+                        <img src="{{ asset('storage/' . $villageProfile->logo) }}" alt="Logo Desa" style="width: 32px; height: 32px;" class="h-8 w-8 rounded-lg object-cover bg-white flex-shrink-0">
                     @else
                         <div class="h-8 w-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold">
                             {{ strtoupper(substr($villageProfile?->name ?? 'D', 0, 1)) }}

@@ -73,11 +73,11 @@
                     </div>
                 @endif
             </div>
-            <div class="lg:col-span-8">
+            <div class="lg:col-span-8 min-w-0">
                 <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">Sambutan Kepala Desa</span>
                 <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-1">{{ $villageProfile->head_name }}</h2>
                 <p class="text-sm text-slate-500 mb-4">{{ $villageProfile->head_title }}</p>
-                <p class="text-slate-600 leading-relaxed text-sm sm:text-base">{{ $villageProfile->head_welcome }}</p>
+                <p class="text-slate-600 leading-relaxed text-sm sm:text-base break-words">{{ $villageProfile->head_welcome }}</p>
                 <div class="mt-6">
                     <a href="{{ route('profile') }}" class="inline-flex items-center text-sm font-semibold text-emerald-700 hover:text-emerald-800">
                         Baca Profil &amp; Visi Misi Desa &rarr;

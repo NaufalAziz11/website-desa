@@ -24,9 +24,9 @@
                     @endif
                 </div>
 
-                <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 leading-tight">{{ $post->title }}</h1>
+                <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 leading-tight break-words">{{ $post->title }}</h1>
 
-                <div class="mt-6 pt-6 border-t border-slate-100 text-slate-700 leading-relaxed whitespace-pre-line text-sm sm:text-base">
+                <div class="mt-6 pt-6 border-t border-slate-100 text-slate-700 leading-relaxed whitespace-pre-line break-words text-sm sm:text-base">
                     {{ $post->content }}
                 </div>
             </div>

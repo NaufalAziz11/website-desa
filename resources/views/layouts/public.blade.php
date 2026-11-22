@@ -45,7 +45,7 @@
                 <!-- Brand -->
                 <a href="{{ route('home') }}" class="flex items-center space-x-3 group">
                     @if($villageProfile?->logo)
-                        <img src="{{ asset('storage/' . $villageProfile->logo) }}" alt="Logo Desa" class="h-10 w-10 rounded-lg object-cover">
+                        <img src="{{ asset('storage/' . $villageProfile->logo) }}" alt="Logo Desa" style="width: 40px; height: 40px;" class="h-10 w-10 rounded-lg object-cover flex-shrink-0">
                     @else
                         <div class="h-10 w-10 rounded-xl bg-emerald-700 text-white flex items-center justify-center font-bold text-lg shadow-sm group-hover:bg-emerald-800 transition">
                             {{ strtoupper(substr($villageProfile?->name ?? 'D', 0, 1)) }}
@@ -121,7 +121,7 @@
                 <div class="lg:col-span-2">
                     <div class="flex items-center space-x-3 mb-4">
                         @if($villageProfile?->logo)
-                            <img src="{{ asset('storage/' . $villageProfile->logo) }}" alt="Logo Desa" class="h-10 w-10 rounded-xl object-cover bg-white">
+                            <img src="{{ asset('storage/' . $villageProfile->logo) }}" alt="Logo Desa" style="width: 40px; height: 40px;" class="h-10 w-10 rounded-xl object-cover bg-white flex-shrink-0">
                         @else
                             <div class="h-10 w-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold text-lg">
                                 {{ strtoupper(substr($villageProfile?->name ?? 'D', 0, 1)) }}

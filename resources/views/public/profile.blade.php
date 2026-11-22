@@ -17,21 +17,21 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-14">
         <!-- Visi & Misi -->
         <section class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <div class="lg:col-span-5 bg-emerald-50 border border-emerald-200 rounded-2xl p-6 sm:p-8">
+            <div class="lg:col-span-5 min-w-0 bg-emerald-50 border border-emerald-200 rounded-2xl p-6 sm:p-8">
                 <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">Visi Desa</span>
                 <h2 class="text-xl font-bold text-slate-900 mt-2 mb-3">Arah Pembangunan</h2>
-                <p class="text-slate-700 leading-relaxed italic text-base">
+                <p class="text-slate-700 leading-relaxed italic text-base break-words">
                     "{{ $profile?->vision ?? 'Visi desa belum diatur.' }}"
                 </p>
             </div>
-            <div class="lg:col-span-7 bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm">
+            <div class="lg:col-span-7 min-w-0 bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm">
                 <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">Misi Desa</span>
                 <h2 class="text-xl font-bold text-slate-900 mt-2 mb-4">Langkah Strategis</h2>
                 <ul class="space-y-3">
                     @forelse($profile?->mission_list ?? [] as $index => $misi)
                         <li class="flex items-start space-x-3">
                             <span class="flex-shrink-0 h-6 w-6 rounded-full bg-emerald-700 text-white text-xs font-bold flex items-center justify-center mt-0.5">{{ $index + 1 }}</span>
-                            <span class="text-slate-700 text-sm sm:text-base leading-relaxed">{{ $misi }}</span>
+                            <span class="flex-1 min-w-0 break-words text-slate-700 text-sm sm:text-base leading-relaxed">{{ $misi }}</span>
                         </li>
                     @empty
                         <li class="text-slate-500 text-sm">Misi desa belum diatur.</li>
@@ -44,7 +44,7 @@
         <section class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm">
             <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">Sejarah Singkat</span>
             <h2 class="text-2xl font-bold text-slate-900 mt-1 mb-4">Asal Usul {{ $profile?->name ?? 'Desa' }}</h2>
-            <div class="prose prose-slate max-w-none text-slate-600 leading-relaxed whitespace-pre-line text-sm sm:text-base">
+            <div class="prose prose-slate max-w-none text-slate-600 leading-relaxed whitespace-pre-line break-words text-sm sm:text-base">
                 {{ $profile?->history ?? 'Belum ada catatan sejarah.' }}
             </div>
         </section>
@@ -98,13 +98,13 @@
                 @foreach($officials as $official)
                     <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex items-start space-x-4">
                         @if($official->photo)
-                            <img src="{{ asset('storage/' . $official->photo) }}" alt="{{ $official->name }}" class="w-16 h-16 rounded-xl object-cover flex-shrink-0">
+                            <img src="{{ asset('storage/' . $official->photo) }}" alt="{{ $official->name }}" style="width: 64px; height: 64px;" class="w-16 h-16 rounded-xl object-cover flex-shrink-0">
                         @else
                             <div class="w-16 h-16 rounded-xl bg-emerald-100 text-emerald-800 font-bold text-xl flex items-center justify-center flex-shrink-0">
                                 {{ strtoupper(substr($official->name, 0, 1)) }}
                             </div>
                         @endif
-                        <div class="min-w-0">
+                        <div class="min-w-0 break-words">
                             <h3 class="font-bold text-slate-900 text-base">{{ $official->name }}</h3>
                             <div class="text-xs font-semibold text-emerald-700 mt-0.5">{{ $official->position }}</div>
                             @if($official->bio)
@@ -118,7 +118,7 @@
 
         <!-- Peta & Kontak -->
         <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm">
-            <div class="lg:col-span-5 space-y-4">
+            <div class="lg:col-span-5 min-w-0 space-y-4">
                 <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">Lokasi &amp; Kontak</span>
                 <h2 class="text-2xl font-bold text-slate-900">Kantor Pemerintah Desa</h2>
                 <div class="space-y-3 text-sm text-slate-600 pt-2">
